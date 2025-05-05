@@ -1,16 +1,7 @@
-import { useState, useEffect } from 'react';
-import socialLinksData from '../data/socialLinks.json';
 import './Footer.css';
 
-const Footer = () => {
+const Footer = ({ socialLinks = [] }) => {
   const currentYear = new Date().getFullYear();
-  const [socialLinks, setSocialLinks] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setSocialLinks(socialLinksData.socialLinks || []);
-    setLoading(false);
-  }, []);
 
   // Function to render the appropriate SVG icon based on platform
   const renderSocialIcon = (platform) => {
@@ -56,7 +47,7 @@ const Footer = () => {
           <div className="footer-links">
             <h4>Connect</h4>
             <nav className="social-links">
-              {loading ? (
+              {!socialLinks || socialLinks.length === 0 ? (
                 <p>Loading social links...</p>
               ) : (
                 socialLinks.map((link, index) => (

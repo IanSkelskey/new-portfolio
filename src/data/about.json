@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "profile": {
+    "name": "Ian",
+    "title": "Software Engineer & Designer",
+    "bio": [
+      "I'm a software engineer with a passion for creating elegant, user-centered digital experiences. With a Bachelor's degree in Software Engineering from Arizona State University and an Associate's degree in Mathematics & Computer Science, I blend technical knowledge with creative problem-solving.",
+      "As an Evergreen ILS specialist, I contribute to open-source projects involving PostgreSQL, Perl, and Angular. My interests span across game development (particularly with Godot and Lua), generative AI technologies, and front-end design systems.",
+      "When I'm not coding, you might find me creating music, taking photographs, or designing visual art—creative pursuits that inform my approach to software development."
+    ]
+  },
+  "skills": {
+    "Programming Languages": [
+      "JavaScript", "TypeScript", "Lua", "Java", "Python", "SQL", "Perl"
+    ],
+    "Frontend": [
+      "React", "Angular", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3"
+    ],
+    "Backend & Databases": [
+      "Node.js", "PostgreSQL", "Firebase", "RESTful APIs"
+    ],
+    "Game Development": [
+      "Godot Engine", "LÖVE2D", "Game Design", "Sprite Art"
+    ],
+    "Design": [
+      "Figma", "Adobe Photoshop", "Adobe Illustrator", "UI/UX"
+    ],
+    "Other": [
+      "Git", "Accessibility (a11y)", "Responsive Design", "Technical Writing"
+    ]
+  },
+  "timeline": [
+    {
+      "year": "2023",
+      "title": "BS in Software Engineering",
+      "institution": "Arizona State University",
+      "description": "Graduated with a Bachelor of Science in Software Engineering"
+    },
+    {
+      "year": "2022",
+      "title": "Field Day Capstone Project",
+      "institution": "Arizona State University",
+      "description": "Led development of a wildlife research data management tool"
+    },
+    {
+      "year": "2019 - Present",
+      "title": "Annual Toy Drive Organizer",
+      "institution": "Connecticut Children's Medical Center",
+      "description": "Organize annual charity event benefiting Connecticut Children's Medical Center"
+    },
+    {
+      "year": "2014",
+      "title": "Zelda: Ocarina of Time Retexture Project",
+      "institution": "Community Project",
+      "description": "Contributed to community-driven retexture project for The Legend of Zelda: Ocarina of Time"
+    }
+  ],
+  "currentFocus": {
+    "summary": "I'm currently expanding my skills in game development with Godot Engine and exploring advanced applications of AI in creative workflows. I'm also working on several open-source contributions and diving deeper into accessible web design practices.",
+    "learning": [
+      "Advanced Godot Engine techniques",
+      "Integration of LLMs in creative applications",
+      "WebGL and 3D rendering for web",
+      "Functional programming patterns"
+    ]
+  }
+}
