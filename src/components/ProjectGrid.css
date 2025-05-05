@@ -252,15 +252,19 @@
   right: var(--space-sm);
   width: 32px;
   height: 32px;
-  background-color: rgba(255, 255, 255, 0.9);
+  /* Replace fixed white background with theme-responsive background */
+  background-color: var(--color-icon-bg, rgba(255, 255, 255, 0.9));
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
+  /* Use theme-aware color */
+  color: var(--color-icon, var(--color-primary));
   z-index: 2;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease;
+  /* Add a subtle border in dark mode for better visibility */
+  border: 1px solid var(--color-icon-border, transparent);
+  box-shadow: 0 2px 8px var(--color-shadow);
+  transition: transform 0.2s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .project-card:hover .project-icon {
@@ -270,6 +274,7 @@
 .project-icon svg {
   width: 18px;
   height: 18px;
+  stroke-width: 2px;
 }
 
 @media (max-width: 1024px) {

@@ -27,14 +27,14 @@ function App() {
       .then(([projectsData, about, social]) => {
         // Process projects to ensure consistent format (migrate from single category to categories array)
         const processedProjects = (projectsData.projects || []).map((project) => {
+          const updatedProject = { ...project };
+
           // If project has category but not categories, convert to array
           if (project.category && !project.categories) {
-            return {
-              ...project,
-              categories: [project.category],
-            };
+            updatedProject.categories = [project.category];
           }
-          return project;
+
+          return updatedProject;
         });
 
         setProjects(processedProjects);

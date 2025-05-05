@@ -79,6 +79,12 @@
       "github": "https://github.com/Field-Day-2022",
       "pwaUrl": "https://asu-field-day-pwa.web.app/",
       "webUiUrl": "https://asu-field-day-webui.web.app/",
+      "links": [
+        {
+          "title": "Documentation",
+          "url": "https://field-day-2022.github.io/"
+        }
+      ],
       "category": "Web App",
       "categories": ["Web Development", "Research"],
       "pageBlurb": "Field Day is my capstone project for my undergraduate degree at ASU. I was a member of a five person team that worked on the project. There were two components to this project: a PWA for mobile data collection in the field, and a data management tool designed for larger screens. My contributions include designing the UI, implementing the desktop UI using React and Tailwind, and connecting the backend to the desktop data management tool.",

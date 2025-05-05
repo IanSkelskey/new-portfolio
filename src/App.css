@@ -8,6 +8,9 @@
   --color-primary-accent: #818cf8;
   --color-border: #e5e7eb;
   --color-shadow: rgba(100, 108, 255, 0.08);
+  --color-icon-bg: rgba(255, 255, 255, 0.9);
+  --color-icon: var(--color-primary);
+  --color-icon-border: transparent;
   
   /* Spacing system */
   --space-xs: 0.5rem;
@@ -47,6 +50,9 @@
     --color-primary-accent: #6366f1;
     --color-border: #334155;
     --color-shadow: rgba(129, 140, 248, 0.12);
+    --color-icon-bg: rgba(30, 30, 30, 0.85);
+    --color-icon: var(--color-primary);
+    --color-icon-border: rgba(255, 255, 255, 0.1);
   }
 }
 
