@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "socialLinks": [
+    {
+      "platform": "GitHub",
+      "url": "https://github.com/IanSkelskey",
+      "ariaLabel": "GitHub"
+    },
+    {
+      "platform": "LinkedIn",
+      "url": "https://linkedin.com/in/ianskelskey",
+      "ariaLabel": "LinkedIn"
+    },
+    {
+      "platform": "DeviantArt",
+      "url": "https://deviantart.com/ianskelskey",
+      "ariaLabel": "DeviantArt"
+    },
+    {
+      "platform": "YouTube",
+      "url": "https://youtube.com/@ianskelskey",
+      "ariaLabel": "YouTube"
+    }
+  ]
+}

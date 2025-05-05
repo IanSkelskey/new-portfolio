@@ -35,6 +35,12 @@ const ProjectDetail = ({ projects }) => {
     return <div className="loading">Project not found</div>;
   }
   
+  // Helper function to extract just the project identifier from path
+  const getProjectIdentifier = (path) => {
+    // Extract the last part of the path (the identifier)
+    return path.split('/').pop();
+  };
+  
   return (
     <motion.div 
       className="project-detail"
@@ -92,7 +98,7 @@ const ProjectDetail = ({ projects }) => {
         <h2>More Projects</h2>
         <div className="project-nav-container">
           {prevProject && (
-            <Link to={prevProject.path.replace('/projects/', '')} className="nav-card prev">
+            <Link to={`/projects/${getProjectIdentifier(prevProject.path)}`} className="nav-card prev">
               <div className="nav-image">
                 <img 
                   src={prevProject.thumbnail || `https://via.placeholder.com/300x200?text=${encodeURIComponent(prevProject.title)}`} 
@@ -107,7 +113,7 @@ const ProjectDetail = ({ projects }) => {
           )}
           
           {nextProject && (
-            <Link to={nextProject.path.replace('/projects/', '')} className="nav-card next">
+            <Link to={`/projects/${getProjectIdentifier(nextProject.path)}`} className="nav-card next">
               <div className="nav-content">
                 <span className="nav-direction">Next</span>
                 <h3>{nextProject.title}</h3>
