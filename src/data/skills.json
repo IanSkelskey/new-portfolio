@@ -1,0 +1,277 @@
+{
+  "version": 1,
+  "categories": [
+    "Programming Languages",
+    "Frontend",
+    "Backend & Databases",
+    "Game Development",
+    "Design & Creative",
+    "Other"
+  ],
+  "skills": [
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "category": "Programming Languages",
+      "description": "Modern web and application programming language"
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "category": "Programming Languages",
+      "description": "Strongly typed programming language that builds on JavaScript"
+    },
+    {
+      "id": "lua",
+      "name": "Lua",
+      "category": "Programming Languages",
+      "description": "Lightweight scripting language often used in game development"
+    },
+    {
+      "id": "java",
+      "name": "Java",
+      "category": "Programming Languages",
+      "description": "Object-oriented programming language used for various applications"
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "category": "Programming Languages",
+      "description": "Versatile programming language known for readability and ease of use"
+    },
+    {
+      "id": "sql",
+      "name": "SQL",
+      "category": "Programming Languages",
+      "description": "Standard language for managing and querying relational databases"
+    },
+    {
+      "id": "perl",
+      "name": "Perl",
+      "category": "Programming Languages",
+      "description": "High-level programming language for text processing and system administration"
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "Frontend",
+      "description": "JavaScript library for building user interfaces"
+    },
+    {
+      "id": "angular",
+      "name": "Angular",
+      "category": "Frontend",
+      "description": "Platform and framework for building single-page client applications"
+    },
+    {
+      "id": "tailwind-css",
+      "name": "Tailwind CSS",
+      "category": "Frontend",
+      "description": "Utility-first CSS framework for rapid UI development"
+    },
+    {
+      "id": "framer-motion",
+      "name": "Framer Motion",
+      "category": "Frontend",
+      "description": "Animation library for React"
+    },
+    {
+      "id": "html5",
+      "name": "HTML5",
+      "category": "Frontend",
+      "description": "Standard markup language for documents designed to be displayed in a web browser"
+    },
+    {
+      "id": "css3",
+      "name": "CSS3",
+      "category": "Frontend",
+      "description": "Style sheet language for describing the presentation of documents"
+    },
+    {
+      "id": "vite",
+      "name": "Vite",
+      "category": "Frontend",
+      "description": "Modern frontend build tool that significantly improves the development experience"
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "category": "Backend & Databases",
+      "description": "JavaScript runtime built on Chrome's V8 JavaScript engine"
+    },
+    {
+      "id": "npm",
+      "name": "npm",
+      "category": "Backend & Databases",
+      "description": "Package manager for JavaScript and the world's largest software registry"
+    },
+    {
+      "id": "cli",
+      "name": "CLI",
+      "category": "Backend & Databases",
+      "description": "Command-line interface tools for efficient system management"
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "Backend & Databases",
+      "description": "Powerful, open source object-relational database system"
+    },
+    {
+      "id": "firebase",
+      "name": "Firebase",
+      "category": "Backend & Databases",
+      "description": "Platform for building web and mobile applications without server-side programming"
+    },
+    {
+      "id": "restful-apis",
+      "name": "RESTful APIs",
+      "category": "Backend & Databases",
+      "description": "Architectural style for designing networked applications"
+    },
+    {
+      "id": "spotify-api",
+      "name": "Spotify API",
+      "category": "Backend & Databases",
+      "description": "Web API for accessing Spotify music data and functionality"
+    },
+    {
+      "id": "godot-engine",
+      "name": "Godot Engine",
+      "category": "Game Development",
+      "description": "Free and open-source game engine"
+    },
+    {
+      "id": "love2d",
+      "name": "LÖVE2D",
+      "category": "Game Development",
+      "description": "Framework for making 2D games in Lua"
+    },
+    {
+      "id": "game-design",
+      "name": "Game Design",
+      "category": "Game Development",
+      "description": "Process of designing content and rules for games"
+    },
+    {
+      "id": "game-art",
+      "name": "Game Art",
+      "category": "Game Development",
+      "description": "Visual assets creation for video games"
+    },
+    {
+      "id": "aseprite",
+      "name": "Aseprite",
+      "category": "Game Development",
+      "description": "Pixel art tool designed to create 2D sprites for video games"
+    },
+    {
+      "id": "minecraft-modding",
+      "name": "Minecraft Modding",
+      "category": "Game Development",
+      "description": "Creating modifications for the popular game Minecraft"
+    },
+    {
+      "id": "audio-integration",
+      "name": "Audio Integration",
+      "category": "Game Development",
+      "description": "Integration of audio content into games and applications"
+    },
+    {
+      "id": "photoshop",
+      "name": "Photoshop",
+      "category": "Design & Creative",
+      "description": "Raster graphics editor for image editing and manipulation"
+    },
+    {
+      "id": "illustrator",
+      "name": "Illustrator",
+      "category": "Design & Creative",
+      "description": "Vector graphics editor for creating and editing vector artwork"
+    },
+    {
+      "id": "ui-design",
+      "name": "UI Design",
+      "category": "Design & Creative",
+      "description": "Design of user interfaces for machines and software"
+    },
+    {
+      "id": "uiux",
+      "name": "UI/UX",
+      "category": "Design & Creative",
+      "description": "Process of enhancing user satisfaction by improving usability and accessibility"
+    },
+    {
+      "id": "image-editing",
+      "name": "Image Editing",
+      "category": "Design & Creative",
+      "description": "Manipulating and enhancing digital images"
+    },
+    {
+      "id": "digital-preservation",
+      "name": "Digital Preservation",
+      "category": "Design & Creative",
+      "description": "Preservation of digital materials for future access and use"
+    },
+    {
+      "id": "openai",
+      "name": "OpenAI",
+      "category": "Other",
+      "description": "AI research and deployment company"
+    },
+    {
+      "id": "generative-ai",
+      "name": "Generative AI",
+      "category": "Other",
+      "description": "AI systems that can generate content from text to images to music"
+    },
+    {
+      "id": "custom-gpt",
+      "name": "Custom GPT",
+      "category": "Other",
+      "description": "Specialized GPT models trained for specific tasks or domains"
+    },
+    {
+      "id": "git",
+      "name": "Git",
+      "category": "Other",
+      "description": "Distributed version control system"
+    },
+    {
+      "id": "open-source",
+      "name": "Open Source",
+      "category": "Other",
+      "description": "Collaborative software development with publically accessible source code"
+    },
+    {
+      "id": "documentation",
+      "name": "Documentation",
+      "category": "Other",
+      "description": "Written text or illustrations that accompany software"
+    },
+    {
+      "id": "game-history",
+      "name": "Game History",
+      "category": "Other",
+      "description": "Knowledge of video game development history and culture"
+    },
+    {
+      "id": "accessibility",
+      "name": "Accessibility",
+      "category": "Other",
+      "description": "Design of products and services for people with disabilities"
+    },
+    {
+      "id": "responsive-design",
+      "name": "Responsive Design",
+      "category": "Other",
+      "description": "Design approach for websites to render well on a variety of devices"
+    },
+    {
+      "id": "technical-writing",
+      "name": "Technical Writing",
+      "category": "Other",
+      "description": "Writing technical documentation for software and systems"
+    }
+  ]
+}

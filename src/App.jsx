@@ -10,11 +10,14 @@ import AboutPage from './components/AboutPage';
 import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
+import SkillDetail from './components/SkillDetail';
+import NotFound from './components/NotFound';
 
 function App() {
   const [projects, setProjects] = useState([]);
   const [aboutData, setAboutData] = useState(null);
   const [socialData, setSocialData] = useState(null);
+  const [skillsData, setSkillsData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -24,8 +27,9 @@ function App() {
       fetch('/src/data/projects.json').then((res) => res.json()),
       fetch('/src/data/about.json').then((res) => res.json()),
       fetch('/src/data/socialLinks.json').then((res) => res.json()),
+      fetch('/src/data/skills.json').then((res) => res.json()),
     ])
-      .then(([projectsData, about, social]) => {
+      .then(([projectsData, about, social, skills]) => {
         // Process projects to ensure consistent format (migrate from single category to categories array)
         const processedProjects = (projectsData.projects || []).map((project) => {
           const updatedProject = { ...project };
@@ -41,6 +45,7 @@ function App() {
         setProjects(processedProjects);
         setAboutData(about);
         setSocialData(social);
+        setSkillsData(skills);
         setLoading(false);
       })
       .catch((err) => {
@@ -60,9 +65,11 @@ function App() {
           <Routes>
             <Route path="/" element={<HomePage projects={projects} socialData={socialData} />} />
             <Route path="/projects" element={<ProjectGrid projects={projects} />} />
-            <Route path="/about" element={<AboutPage aboutData={aboutData} socialData={socialData} />} />
-            <Route path="/projects/:projectPath" element={<ProjectDetail projects={projects} />} />
-            <Route path="*" element={<Navigate to="/" />} />
+            <Route path="/about" element={<AboutPage aboutData={aboutData} skillsData={skillsData} socialData={socialData} />} />
+            <Route path="/projects/:projectPath" element={<ProjectDetail projects={projects} skillsData={skillsData} />} />
+            <Route path="/skills/:skillId" element={<SkillDetail skillsData={skillsData} projects={projects} />} />
+            <Route path="/404" element={<NotFound />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
         <Footer socialLinks={socialData?.socialLinks} />

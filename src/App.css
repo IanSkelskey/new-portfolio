@@ -48,7 +48,8 @@
   /* Border radius */
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
-  --radius-lg: 1rem;
+  --radius-lg: 0.75rem; /* Adjusted from 1rem to 0.75rem for more subtle card corners */
+  --radius-xl: 1rem;    /* Added for larger elements */
   --radius-full: 9999px;
   
   /* Transitions */

@@ -52,7 +52,9 @@ const ProjectCard = ({ project, index, minimal = false }) => {
           {!minimal && (
             <div className="project-tech">
               {project.skills.slice(0, 3).map(skill => (
-                <span key={skill} className="tech-tag">{skill}</span>
+                <Link key={skill} to={`/skills/${skill.toLowerCase().replace(/\s+/g, '-')}`} className="tech-tag">
+                  {skill}
+                </Link>
               ))}
               {project.skills.length > 3 && (
                 <span className="tech-tag tech-tag-more">+{project.skills.length - 3}</span>

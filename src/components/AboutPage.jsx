@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import './AboutPage.css';
 
-const AboutPage = () => {
-  const [aboutData, setAboutData] = useState(null);
+const AboutPage = ({ aboutData, skillsData, socialData }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -28,25 +28,21 @@ const AboutPage = () => {
   };
 
   useEffect(() => {
-    fetch('/src/data/about.json')
-      .then(response => {
-        if (!response.ok) throw new Error('Failed to load about data');
-        return response.json();
-      })
-      .then(data => {
-        setAboutData(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.error('Error loading about data:', error);
-        setError(error.message);
-        setLoading(false);
-      });
-  }, []);
+    if (aboutData && skillsData) {
+      setLoading(false);
+    } else {
+      setError("Missing required data");
+    }
+  }, [aboutData, skillsData]);
 
   if (loading) return <div className="loading">Loading about information...</div>;
   if (error) return <div className="error">Error: {error}</div>;
-  if (!aboutData) return <div className="error">No about data available</div>;
+
+  // Group skills by category for display
+  const skillsByCategory = skillsData.categories.reduce((acc, category) => {
+    acc[category] = skillsData.skills.filter(skill => skill.category === category);
+    return acc;
+  }, {});
 
   return (
     <div className="about-page">
@@ -79,12 +75,16 @@ const AboutPage = () => {
       >
         <motion.h2 variants={itemVariants}>Skills & Technologies</motion.h2>
         <motion.div className="skills-grid" variants={containerVariants}>
-          {Object.entries(aboutData.skills).map(([category, skillList]) => (
+          {Object.entries(skillsByCategory).map(([category, skills]) => (
             <motion.div key={category} className="skill-category" variants={itemVariants}>
               <h3>{category}</h3>
               <ul>
-                {skillList.map(skill => (
-                  <li key={skill}>{skill}</li>
+                {skills.map(skill => (
+                  <li key={skill.id}>
+                    <Link to={`/skills/${skill.id}`} className="skill-link">
+                      {skill.name}
+                    </Link>
+                  </li>
                 ))}
               </ul>
             </motion.div>

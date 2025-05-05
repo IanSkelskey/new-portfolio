@@ -9,26 +9,6 @@
       "When I'm not coding, you might find me creating music, taking photographs, or designing visual art—creative pursuits that inform my approach to software development."
     ]
   },
-  "skills": {
-    "Programming Languages": [
-      "JavaScript", "TypeScript", "Lua", "Java", "Python", "SQL", "Perl"
-    ],
-    "Frontend": [
-      "React", "Angular", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3", "Vite"
-    ],
-    "Backend & Databases": [
-      "Node.js", "npm", "CLI", "PostgreSQL", "Firebase", "RESTful APIs", "Spotify API"
-    ],
-    "Game Development": [
-      "Godot Engine", "LÖVE2D", "Game Design", "Game Art", "Aseprite", "Minecraft Modding", "Audio Integration"
-    ],
-    "Design & Creative": [
-      "Photoshop", "Illustrator", "UI Design", "UI/UX", "Image Editing", "Digital Preservation"
-    ],
-    "Other": [
-      "OpenAI", "Generative AI", "Custom GPT", "Git", "Open Source", "Documentation", "Game History", "Accessibility", "Responsive Design", "Technical Writing"
-    ]
-  },
   "timeline": [
     {
       "year": "2023",

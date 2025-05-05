@@ -1,4 +1,6 @@
 :root {
+  --radius-md: 8px; /* Define the CSS variable for border radius */
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -36,7 +38,7 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: var(--radius-md); /* Changed from hardcoded 8px to use CSS variable */
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;

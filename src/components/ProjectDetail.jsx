@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import IconRenderer from './IconRenderer';
 import './ProjectDetail.css';
 
-const ProjectDetail = ({ projects }) => {
+const ProjectDetail = ({ projects, skillsData }) => {
   const { projectPath } = useParams();
   const [project, setProject] = useState(null);
   const [nextProject, setNextProject] = useState(null);
@@ -40,6 +40,17 @@ const ProjectDetail = ({ projects }) => {
   // Helper function to extract just the project identifier from path
   const getProjectIdentifier = (path) => {
     return path.split('/').pop();
+  };
+
+  // Helper function to get skill id from name
+  const getSkillId = (skillName) => {
+    if (!skillsData) return skillName.toLowerCase().replace(/\s+/g, '-');
+    
+    const skill = skillsData.skills.find(s => 
+      s.name.toLowerCase() === skillName.toLowerCase()
+    );
+    
+    return skill ? skill.id : skillName.toLowerCase().replace(/\s+/g, '-');
   };
   
   if (loading) {
@@ -152,7 +163,13 @@ const ProjectDetail = ({ projects }) => {
               <h2 className="section-heading">Technologies Used</h2>
               <div className="tech-stack">
                 {project.skills.map(skill => (
-                  <span key={skill} className="tech-badge">{skill}</span>
+                  <Link 
+                    key={skill} 
+                    to={`/skills/${getSkillId(skill)}`} 
+                    className="tech-badge"
+                  >
+                    {skill}
+                  </Link>
                 ))}
               </div>
             </>
