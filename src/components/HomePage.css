@@ -163,6 +163,8 @@
   text-align: center;
   background-color: var(--color-primary);
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+  /* Add border for better definition */
+  border: 1px solid var(--color-cta-border, transparent);
 }
 
 .cta-content {
@@ -173,13 +175,17 @@
 .cta-content h2 {
   font-size: var(--font-size-2xl);
   margin-bottom: var(--space-md);
-  color: white;
+  color: var(--color-cta-text, white);
+  /* Increased font weight for better readability */
+  font-weight: 700;
 }
 
 .cta-content p {
   font-size: var(--font-size-lg);
   margin-bottom: var(--space-lg);
-  color: rgba(255, 255, 255, 0.9);
+  color: var(--color-cta-text-secondary, rgba(255, 255, 255, 0.9));
+  /* Increased font weight for better readability */
+  font-weight: 500;
 }
 
 .cta-buttons {
@@ -192,6 +198,8 @@
   background-color: white;
   color: var(--color-primary);
   border: 2px solid white;
+  /* Increased font weight for better contrast */
+  font-weight: 700;
 }
 
 .cta-section .btn-primary:hover {
@@ -201,8 +209,10 @@
 
 .cta-section .btn-secondary {
   background-color: transparent;
-  border: 2px solid white;
-  color: white;
+  border: 2px solid var(--color-cta-btn-border, white);
+  color: var(--color-cta-text, white);
+  /* Increased font weight for better contrast */
+  font-weight: 600;
 }
 
 .cta-section .btn-secondary:hover {
@@ -248,5 +258,40 @@
   
   .section-container {
     padding: var(--space-lg) var(--space-sm);
+  }
+}
+
+/* Dark mode CTA section improvements */
+@media (prefers-color-scheme: dark) {
+  .cta-section {
+    /* Darker, more saturated background for better contrast with light text */
+    background-color: #4338ca; /* Darker indigo */
+    /* Add border for better definition in dark mode */
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .cta-content h2 {
+    /* Ensure heading is pure white for maximum contrast */
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* Add shadow for better legibility */
+  }
+  
+  .cta-content p {
+    /* Lighter text for better contrast */
+    color: rgba(255, 255, 255, 0.95);
+  }
+  
+  .cta-section .btn-primary {
+    /* High contrast - black text on white background */
+    color: #000000;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .cta-section .btn-secondary {
+    /* Ensure text is pure white for maximum contrast */
+    color: #ffffff;
+    /* Higher opacity border for better visibility */
+    border-color: rgba(255, 255, 255, 0.8);
   }
 }

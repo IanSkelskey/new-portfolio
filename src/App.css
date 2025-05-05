@@ -1,16 +1,27 @@
 :root {
-  /* Light mode colors */
+  /* Light mode colors - improved contrast */
   --color-bg: #f8fafc;
   --color-bg-card: #fff;
   --color-text: #1a202c;
-  --color-text-secondary: #64748b;
-  --color-primary: #6366f1;
-  --color-primary-accent: #818cf8;
-  --color-border: #e5e7eb;
-  --color-shadow: rgba(100, 108, 255, 0.08);
-  --color-icon-bg: rgba(255, 255, 255, 0.9);
+  /* Darkened text-secondary for better contrast */
+  --color-text-secondary: #4b5563;
+  --color-primary: #5046e5;
+  --color-primary-accent: #6366f1;
+  /* Added text-on-primary for better contrast on colored backgrounds */
+  --color-text-on-primary: #ffffff;
+  --color-border: #d4d4d8;
+  --color-shadow: rgba(79, 70, 229, 0.08);
+  /* Improved icon contrast */
+  --color-icon-bg: #ffffff;
   --color-icon: var(--color-primary);
-  --color-icon-border: transparent;
+  --color-icon-border: rgba(0, 0, 0, 0.12);
+  
+  /* For accessibility, added high-contrast text colors */
+  --color-text-high-contrast: #000000;
+  --color-link-hover: #4338ca;
+  
+  /* Accessibility color for disabled elements */
+  --color-disabled: #9ca3af;
   
   /* Spacing system */
   --space-xs: 0.5rem;
@@ -38,21 +49,92 @@
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
+
+  /* CTA section specific colors */
+  --color-cta-text: #ffffff;
+  --color-cta-text-secondary: rgba(255, 255, 255, 0.9);
+  --color-cta-border: transparent;
+  --color-cta-btn-border: white;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --color-bg: #0f172a;
-    --color-bg-card: #1e293b;
-    --color-text: #f1f5f9;
-    --color-text-secondary: #94a3b8;
-    --color-primary: #818cf8;
-    --color-primary-accent: #6366f1;
-    --color-border: #334155;
-    --color-shadow: rgba(129, 140, 248, 0.12);
-    --color-icon-bg: rgba(30, 30, 30, 0.85);
-    --color-icon: var(--color-primary);
-    --color-icon-border: rgba(255, 255, 255, 0.1);
+    /* Dark mode colors with improved contrast */
+    --color-bg: #111827;
+    --color-bg-card: #1f2937;
+    
+    /* Increased contrast for text elements */
+    --color-text: #f9fafb; /* Brighter white for main text */
+    --color-text-secondary: #e2e8f0; /* Much lighter secondary text for better contrast */
+    
+    /* Brighter primary color for better visibility */
+    --color-primary: #a5b4fc; /* Lighter indigo */
+    --color-primary-accent: #c7d2fe; /* Even lighter for accents */
+    
+    /* Better contrast for primary text on dark background */
+    --color-text-on-primary: #000000;
+    
+    /* Higher contrast borders */
+    --color-border: #4b5563;
+    
+    --color-shadow: rgba(149, 157, 255, 0.16);
+    
+    /* Improved dark mode icon visibility */
+    --color-icon-bg: rgba(55, 65, 81, 0.9); /* Slightly lighter bg */
+    --color-icon: #c7d2fe; /* Bright icon color */
+    --color-icon-border: rgba(255, 255, 255, 0.25); /* More visible border */
+    
+    /* Adjusted link colors */
+    --color-link-hover: #ddd6fe; /* Lighter hover for better contrast */
+    
+    /* Improve contrast for disabled elements */
+    --color-disabled: #9ca3af;
+    
+    /* High contrast text for important elements */
+    --color-text-high-contrast: #ffffff;
+
+    /* CTA section dark mode colors */
+    --color-cta-text: #ffffff;
+    --color-cta-text-secondary: rgba(255, 255, 255, 0.95);
+    --color-cta-border: rgba(255, 255, 255, 0.2);
+    --color-cta-btn-border: rgba(255, 255, 255, 0.8);
+  }
+}
+
+/* Add explicit color overrides for specific dark mode elements */
+@media (prefers-color-scheme: dark) {
+  .filter-btn {
+    /* Darker background with higher contrast text */
+    background-color: #374151;
+    color: #f3f4f6;
+  }
+  
+  .filter-btn.active {
+    /* Make active buttons more visible with better contrast */
+    background-color: var(--color-primary);
+    color: #000000; /* Black text on light primary background */
+  }
+  
+  .tech-tag {
+    /* Improve tag visibility in dark mode */
+    background-color: rgba(165, 180, 252, 0.2);
+    color: #e2e8f0;
+  }
+  
+  /* Social links in dark mode - better visibility */
+  .social-links a {
+    background-color: rgba(165, 180, 252, 0.2);
+  }
+  
+  /* Improved button contrast in dark mode */
+  .btn-secondary {
+    border-width: 2px; /* Thicker borders for better visibility */
+  }
+  
+  /* Emphasized CTA sections to maintain contrast */
+  .cta-section .btn-primary {
+    color: #111827; /* Dark text on light button for contrast */
+    font-weight: 700;
   }
 }
 
@@ -171,19 +253,21 @@ button {
 
 .btn-primary {
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-text-on-primary, white);
+  font-weight: 600;
 }
 
 .btn-primary:hover {
-  background-color: var(--color-primary-accent);
+  background-color: var(--color-link-hover, var(--color-primary-accent));
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--color-shadow);
 }
 
 .btn-secondary {
   background-color: transparent;
-  border: 1px solid var(--color-primary);
+  border: 2px solid var(--color-primary);
   color: var(--color-primary);
+  font-weight: 600;
 }
 
 .btn-secondary:hover {

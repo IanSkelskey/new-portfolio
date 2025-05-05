@@ -9,46 +9,53 @@ import {
 const IconRenderer = ({ icon }) => {
   if (!icon) return null;
   
+  // Common accessibility props for all icons
+  const accessibilityProps = {
+    'aria-hidden': 'true',  // Hide from screen readers since they're decorative
+    focusable: 'false',     // Prevent focus on SVG
+    role: 'img'             // Ensure proper role
+  };
+  
   // Map custom icon names to React Icons components
   switch (icon.toLowerCase()) {
     case 'terminal':
-      return <FaTerminal />;
+      return <FaTerminal {...accessibilityProps} />;
     
     case 'ocarina':
       // Use a game controller for ocarina
-      return <FaGamepad />;
+      return <FaGamepad {...accessibilityProps} />;
       
     case 'evergreen':
     case 'evergreen-ils':
-      return <FaBook />;
+      return <FaBook {...accessibilityProps} />;
       
     case 'fieldday':
     case 'field-day':
       // Better icon for wildlife research: leaf represents nature/field work
-      return <FaLeaf />;
+      return <FaLeaf {...accessibilityProps} />;
       
     case 'gift':
-      return <FaGift />;
+      return <FaGift {...accessibilityProps} />;
       
     case 'gamecontroller':
     case 'game-controller':
-      return <FaGamepad />;
+      return <FaGamepad {...accessibilityProps} />;
       
     case 'recordvinyl':
     case 'record-vinyl':
-      return <FaCompactDisc />;
+      return <FaCompactDisc {...accessibilityProps} />;
       
     case 'cube':
-      return <FaCube />;
+      return <FaCube {...accessibilityProps} />;
       
     case 'image':
-      return <FaImage />;
+      return <FaImage {...accessibilityProps} />;
       
     case 'github':
-      return <FaGithub />;
+      return <FaGithub {...accessibilityProps} />;
       
     default:
-      return <FaInfoCircle />;
+      return <FaInfoCircle {...accessibilityProps} />;
   }
 };
 

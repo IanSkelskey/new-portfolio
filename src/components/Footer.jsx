@@ -8,19 +8,24 @@ import { SiDeviantart } from 'react-icons/si';
 const Footer = ({ socialLinks = [] }) => {
   const currentYear = new Date().getFullYear();
 
-  // Function to render the appropriate icon based on platform
-  const renderSocialIcon = (platform) => {
+  // Function to render the appropriate icon based on platform with proper accessibility
+  const renderSocialIcon = (platform, ariaLabel) => {
+    const iconProps = {
+      'aria-hidden': 'true', // Hide icon from screen readers as we're using aria-label on parent
+      focusable: 'false'     // Prevent focus on SVG in some browsers
+    };
+    
     switch (platform.toLowerCase()) {
       case 'github':
-        return <FaGithub />;
+        return <FaGithub {...iconProps} />;
       case 'linkedin':
-        return <FaLinkedin />;
+        return <FaLinkedin {...iconProps} />;
       case 'deviantart':
-        return <SiDeviantart />;
+        return <SiDeviantart {...iconProps} />;
       case 'youtube':
-        return <FaYoutube />;
+        return <FaYoutube {...iconProps} />;
       default:
-        return <FaExternalLinkAlt />;
+        return <FaExternalLinkAlt {...iconProps} />;
     }
   };
 
@@ -45,9 +50,11 @@ const Footer = ({ socialLinks = [] }) => {
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={link.ariaLabel}
+                    aria-label={link.ariaLabel || `Follow on ${link.platform}`}
+                    className="social-link"
                   >
-                    {renderSocialIcon(link.platform)}
+                    {renderSocialIcon(link.platform, link.ariaLabel)}
+                    <span className="visually-hidden">{link.platform}</span>
                   </a>
                 ))
               )}
@@ -57,7 +64,7 @@ const Footer = ({ socialLinks = [] }) => {
 
         <div className="copyright">
           <p>&copy; {currentYear} All rights reserved.</p>
-          <p>Made with ❤️ by Ian Skelskey.</p>
+          <p>Made with <span aria-label="love">❤️</span> by Ian Skelskey.</p>
         </div>
       </div>
     </footer>
