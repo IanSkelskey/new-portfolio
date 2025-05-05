@@ -5,7 +5,7 @@
     "title": "Software Engineer & Designer",
     "bio": [
       "I'm a software engineer with a passion for creating elegant, user-centered digital experiences. With a Bachelor's degree in Software Engineering from Arizona State University and an Associate's degree in Mathematics & Computer Science, I blend technical knowledge with creative problem-solving.",
-      "As an Evergreen ILS specialist, I contribute to open-source projects involving PostgreSQL, Perl, and Angular. My interests span across game development (particularly with Godot and Lua), generative AI technologies, and front-end design systems.",
+      "As an Evergreen ILS specialist at Bibliomation Inc., I contribute to open-source projects involving PostgreSQL, Perl, and Angular. My interests span across game development (particularly with Godot and Lua), generative AI technologies, and front-end design systems.",
       "When I'm not coding, you might find me creating music, taking photographs, or designing visual art—creative pursuits that inform my approach to software development."
     ]
   },
@@ -14,19 +14,19 @@
       "JavaScript", "TypeScript", "Lua", "Java", "Python", "SQL", "Perl"
     ],
     "Frontend": [
-      "React", "Angular", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3"
+      "React", "Angular", "Tailwind CSS", "Framer Motion", "HTML5", "CSS3", "Vite"
     ],
     "Backend & Databases": [
-      "Node.js", "PostgreSQL", "Firebase", "RESTful APIs"
+      "Node.js", "npm", "CLI", "PostgreSQL", "Firebase", "RESTful APIs", "Spotify API"
     ],
     "Game Development": [
-      "Godot Engine", "LÖVE2D", "Game Design", "Sprite Art"
+      "Godot Engine", "LÖVE2D", "Game Design", "Game Art", "Aseprite", "Minecraft Modding", "Audio Integration"
     ],
-    "Design": [
-      "Figma", "Adobe Photoshop", "Adobe Illustrator", "UI/UX"
+    "Design & Creative": [
+      "Photoshop", "Illustrator", "UI Design", "UI/UX", "Image Editing", "Digital Preservation"
     ],
     "Other": [
-      "Git", "Accessibility (a11y)", "Responsive Design", "Technical Writing"
+      "OpenAI", "Generative AI", "Custom GPT", "Git", "Open Source", "Documentation", "Game History", "Accessibility", "Responsive Design", "Technical Writing"
     ]
   },
   "timeline": [

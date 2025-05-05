@@ -368,12 +368,6 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
-/* Remove ASU-specific styles */
-.project-detail.asu-project .btn-mobile,
-.project-detail.asu-project .btn-desktop {
-  /* These styles are now handled by the dynamic accent color */
-}
-
 /* Base button style */
 .btn {
   display: inline-flex;
