@@ -16,20 +16,51 @@ const IconRenderer = ({ icon }) => {
       );
     
     case 'ocarina':
+      // Custom stylized ocarina icon (Zelda-inspired)
       return (
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <path d="M12 8c-2.8 0-5 2.2-5 5s2.2 5 5 5 5-2.2 5-5-2.2-5-5-5z"></path>
-          <path d="M12 8V3"></path>
-          <path d="M12 18v3"></path>
-          <path d="M16 12h5"></path>
-          <path d="M3 12h5"></path>
-          <path d="M14.8 9.2l3.5-3.5"></path>
-          <path d="M5.7 18.3l3.5-3.5"></path>
-          <path d="M9.2 9.2L5.7 5.7"></path>
-          <path d="M18.3 18.3l-3.5-3.5"></path>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          {/* Ocarina body */}
+          <ellipse cx="28" cy="14" rx="16" ry="8" fill="currentColor" fillOpacity="0.12" />
+          <ellipse cx="28" cy="14" rx="16" ry="8" />
+          {/* Mouthpiece */}
+          <rect x="6" y="10" width="8" height="4" rx="2" fill="currentColor" fillOpacity="0.18" />
+          <rect x="6" y="10" width="8" height="4" rx="2" />
+          {/* Holes */}
+          <circle cx="20" cy="14" r="1.2" fill="currentColor" />
+          <circle cx="25" cy="12" r="1.2" fill="currentColor" />
+          <circle cx="30" cy="15" r="1.2" fill="currentColor" />
+          <circle cx="35" cy="13" r="1.2" fill="currentColor" />
+          {/* Decorative shine */}
+          <path d="M36 10c-2-2-8-2-10 0" stroke="currentColor" strokeOpacity="0.3" />
         </svg>
       );
       
+    case 'evergreen':
+    case 'evergreen-ils':
+      // Stylized evergreen tree with book base, more elegant and balanced
+      return (
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          {/* Tree layers */}
+          <path
+            d="M16 4 L10 14 H13 L8 20 H12 L6 26 H26 L20 20 H24 L19 14 H22 Z"
+            fill="currentColor"
+            fillOpacity="0.13"
+          />
+          <path
+            d="M16 4 L10 14 H13 L8 20 H12 L6 26 H26 L20 20 H24 L19 14 H22 Z"
+          />
+          {/* Tree trunk */}
+          <rect x="14.25" y="26" width="3.5" height="4" rx="1" fill="currentColor" fillOpacity="0.18" />
+          <rect x="14.25" y="26" width="3.5" height="4" rx="1" />
+          {/* Book base */}
+          <rect x="8" y="29" width="16" height="2" rx="1" fill="currentColor" fillOpacity="0.10" />
+          <rect x="8" y="29" width="16" height="2" rx="1" />
+          {/* Decorative lines for book pages */}
+          <line x1="12" y1="30" x2="12" y2="31" stroke="currentColor" strokeOpacity="0.5" />
+          <line x1="16" y1="30" x2="16" y2="31" stroke="currentColor" strokeOpacity="0.5" />
+          <line x1="20" y1="30" x2="20" y2="31" stroke="currentColor" strokeOpacity="0.5" />
+        </svg>
+      );
     case 'fieldday':
     case 'field-day':
       return (
