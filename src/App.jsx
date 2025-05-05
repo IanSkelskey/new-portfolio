@@ -6,6 +6,7 @@ import './App.css';
 import Header from './components/Header';
 import ProjectGrid from './components/ProjectGrid';
 import ProjectDetail from './components/ProjectDetail';
+import AboutPage from './components/AboutPage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 
@@ -13,7 +14,6 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  // Remove darkMode state and toggle, use system preference only
 
   useEffect(() => {
     fetch('/src/data/projects.json')
@@ -31,10 +31,6 @@ function App() {
       });
   }, []);
 
-  // Remove darkMode effect, use CSS only
-
-
-
   if (loading) return <LoadingSpinner />;
 
   return (
@@ -45,6 +41,7 @@ function App() {
           {error && <div className="error-message">Error: {error}</div>}
           <Routes>
             <Route path="/" element={<ProjectGrid projects={projects} />} />
+            <Route path="/about" element={<AboutPage />} />
             <Route path="/projects/:projectPath" element={<ProjectDetail projects={projects} />} />
             <Route path="*" element={<Navigate to="/" />} />
           </Routes>
