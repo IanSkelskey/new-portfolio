@@ -44,7 +44,7 @@ const ProjectDetail = ({ projects }) => {
   
   if (loading) {
     return (
-      <div className="loading">
+      <div className="loading" aria-live="polite">
         <span>Loading project details...</span>
       </div>
     );
@@ -52,7 +52,7 @@ const ProjectDetail = ({ projects }) => {
   
   if (!project) {
     return (
-      <div className="loading">
+      <div className="loading" aria-live="polite">
         <span>Project not found</span>
         <Link to="/projects" className="btn btn-primary">
           Back to Projects
@@ -65,6 +65,27 @@ const ProjectDetail = ({ projects }) => {
   const projectCategories = Array.isArray(project.categories) 
     ? project.categories 
     : project.category ? [project.category] : [];
+    
+  // Create a more accessible approach to accent colors
+  // Only apply accent colors to decorative elements, not text
+  const accentStyle = {
+    // For decorative elements only (not affecting text contrast)
+    accentDecoration: project.accentColor ? {
+      backgroundColor: project.accentColor
+    } : {},
+    
+    // For borders and non-text elements
+    accentBorder: project.accentColor ? {
+      borderColor: project.accentColor
+    } : {},
+    
+    // CSS variable for project-specific accent - will be used with opacity values
+    // to ensure it doesn't cause contrast issues
+    accentVariable: project.accentColor ? {
+      "--project-accent-color": project.accentColor,
+      "--project-accent-transparent": `${project.accentColor}33` // 20% opacity version
+    } : {}
+  };
   
   return (
     <motion.div 
@@ -73,11 +94,12 @@ const ProjectDetail = ({ projects }) => {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
+      style={accentStyle.accentVariable}
     >
       <section className="project-hero">
         <div className="project-hero-content">
           {project.icon && (
-            <div className="project-hero-icon">
+            <div className="project-hero-icon" aria-hidden="true">
               <IconRenderer icon={project.icon} />
             </div>
           )}
@@ -95,17 +117,21 @@ const ProjectDetail = ({ projects }) => {
             )}
           </div>
         </div>
+        
         <div className="project-hero-image">
           <img 
             src={project.thumbnail || `https://via.placeholder.com/1200x600?text=${encodeURIComponent(project.title)}`} 
-            alt={project.title} 
+            alt={`${project.title} screenshot or preview`}
           />
         </div>
       </section>
       
       <section className="project-content">
         <div className="project-description">
-          <h2>About the Project</h2>
+          <h2 className="section-heading">
+            About the Project
+          </h2>
+          
           {/* Use pageBlurb if available, otherwise use description */}
           <p>{project.pageBlurb || project.description}</p>
           
@@ -123,7 +149,7 @@ const ProjectDetail = ({ projects }) => {
           {/* Only show skills section if skills are available */}
           {project.skills && project.skills.length > 0 && (
             <>
-              <h2>Technologies Used</h2>
+              <h2 className="section-heading">Technologies Used</h2>
               <div className="tech-stack">
                 {project.skills.map(skill => (
                   <span key={skill} className="tech-badge">{skill}</span>
@@ -133,46 +159,112 @@ const ProjectDetail = ({ projects }) => {
           )}
           
           {/* Project links section - only show if there are links available */}
-          {(project.github || project.deploymentUrl || project.pwaUrl || 
-            project.webUiUrl || (project.links && project.links.length > 0)) && (
+          {(project.github || project.npmUrl || project.gptUrl || project.mobileAppUrl || project.desktopAppUrl || 
+            (project.links && project.links.length > 0)) && (
             <div className="project-links-section">
               <h2>Project Links</h2>
               
               {/* Primary project links */}
               <div className="project-links">
                 {project.github && (
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-github">
+                  <a 
+                    href={project.github} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-github"
+                    aria-label={`GitHub repository for ${project.title}`}
+                  >
                     GitHub Repository
                   </a>
                 )}
-                
-                {project.deploymentUrl && (
-                  <a href={project.deploymentUrl} target="_blank" rel="noopener noreferrer" className="btn btn-live">
-                    Live Demo
+
+                {project.npmUrl && (
+                  <a 
+                    href={project.npmUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-npm"
+                    aria-label={`npm package for ${project.title}`}
+                  >
+                    npm Package
                   </a>
                 )}
                 
-                {project.pwaUrl && (
-                  <a href={project.pwaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-pwa">
-                    PWA Version
+                {project.gptUrl && (
+                  <a 
+                    href={project.gptUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-gpt"
+                    aria-label={`Try ${project.title} in ChatGPT`}
+                  >
+                    Try in ChatGPT
                   </a>
                 )}
                 
-                {project.webUiUrl && (
-                  <a href={project.webUiUrl} target="_blank" rel="noopener noreferrer" className="btn btn-webui">
-                    Web UI
+                {/* Live demo links from links array */}
+                {project.links && project.links.some(link => link.title.toLowerCase().includes('live') || 
+                                                            link.title.toLowerCase().includes('website') || 
+                                                            link.title.toLowerCase().includes('demo')) && 
+                  project.links.filter(link => link.title.toLowerCase().includes('live') || 
+                                               link.title.toLowerCase().includes('website') || 
+                                               link.title.toLowerCase().includes('demo')).map((link, i) => (
+                    <a 
+                      key={i} 
+                      href={link.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      className="btn btn-live"
+                      aria-label={`${link.title} for ${project.title}`}
+                    >
+                      {link.title}
+                    </a>
+                  ))
+                }
+                
+                {project.mobileAppUrl && (
+                  <a 
+                    href={project.mobileAppUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-mobile"
+                    aria-label={`Mobile app for ${project.title}`}
+                  >
+                    Mobile App
+                  </a>
+                )}
+                
+                {project.desktopAppUrl && (
+                  <a 
+                    href={project.desktopAppUrl} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    className="btn btn-desktop"
+                    aria-label={`Desktop app for ${project.title}`}
+                  >
+                    Desktop App
                   </a>
                 )}
               </div>
               
-              {/* Additional links from the links array */}
-              {project.links && project.links.length > 0 && (
+              {/* Additional links from the links array that are not live/demo links */}
+              {project.links && project.links.length > 0 && 
+                project.links.filter(link => !(link.title.toLowerCase().includes('live') || 
+                                               link.title.toLowerCase().includes('website') || 
+                                               link.title.toLowerCase().includes('demo'))).length > 0 && (
                 <div className="additional-links">
                   <h3>Additional Resources</h3>
                   <ul className="resources-list">
-                    {project.links.map((link, index) => (
+                    {project.links.filter(link => !(link.title.toLowerCase().includes('live') || 
+                                                    link.title.toLowerCase().includes('website') || 
+                                                    link.title.toLowerCase().includes('demo'))).map((link, index) => (
                       <li key={index}>
-                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        <a 
+                          href={link.url} 
+                          target="_blank" 
+                          rel="noopener noreferrer"
+                          aria-label={`${link.title} resource for ${project.title}`}
+                        >
                           {link.title}
                         </a>
                       </li>
@@ -185,15 +277,19 @@ const ProjectDetail = ({ projects }) => {
         </div>
       </section>
       
-      <section className="project-navigation">
+      <section className="project-navigation" aria-label="Project navigation">
         <h2>More Projects</h2>
         <div className="project-nav-container">
           {prevProject && (
-            <Link to={`/projects/${getProjectIdentifier(prevProject.path)}`} className="nav-card prev">
-              <div className="nav-image">
+            <Link 
+              to={`/projects/${getProjectIdentifier(prevProject.path)}`} 
+              className="nav-card prev"
+              aria-label={`Previous project: ${prevProject.title}`}
+            >
+              <div className="nav-image" aria-hidden="true">
                 <img 
                   src={prevProject.thumbnail || `https://via.placeholder.com/300x200?text=${encodeURIComponent(prevProject.title)}`} 
-                  alt={prevProject.title} 
+                  alt="" 
                 />
               </div>
               <div className="nav-content">
@@ -204,15 +300,19 @@ const ProjectDetail = ({ projects }) => {
           )}
           
           {nextProject && (
-            <Link to={`/projects/${getProjectIdentifier(nextProject.path)}`} className="nav-card next">
+            <Link 
+              to={`/projects/${getProjectIdentifier(nextProject.path)}`} 
+              className="nav-card next"
+              aria-label={`Next project: ${nextProject.title}`}
+            >
               <div className="nav-content">
                 <span className="nav-direction">Next</span>
                 <h3>{nextProject.title}</h3>
               </div>
-              <div className="nav-image">
+              <div className="nav-image" aria-hidden="true">
                 <img 
                   src={nextProject.thumbnail || `https://via.placeholder.com/300x200?text=${encodeURIComponent(nextProject.title)}`} 
-                  alt={nextProject.title} 
+                  alt="" 
                 />
               </div>
             </Link>

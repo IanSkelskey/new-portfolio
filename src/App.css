@@ -3,25 +3,30 @@
   --color-bg: #f8fafc;
   --color-bg-card: #fff;
   --color-text: #1a202c;
-  /* Darkened text-secondary for better contrast */
   --color-text-secondary: #4b5563;
   --color-primary: #5046e5;
   --color-primary-accent: #6366f1;
-  /* Added text-on-primary for better contrast on colored backgrounds */
   --color-text-on-primary: #ffffff;
+  --color-text-on-dark: #ffffff; /* Added for consistent light text on dark backgrounds */
+  --color-text-light: #ffffff; /* Added for consistent light text */
   --color-border: #d4d4d8;
   --color-shadow: rgba(79, 70, 229, 0.08);
-  /* Improved icon contrast */
   --color-icon-bg: #ffffff;
   --color-icon: var(--color-primary);
   --color-icon-border: rgba(0, 0, 0, 0.12);
-  
-  /* For accessibility, added high-contrast text colors */
   --color-text-high-contrast: #000000;
   --color-link-hover: #4338ca;
-  
-  /* Accessibility color for disabled elements */
   --color-disabled: #9ca3af;
+  
+  /* Added new specific button colors */
+  --color-btn-github: #24292e;
+  --color-btn-github-hover: #1a1e22;
+  --color-btn-npm: #cb3837;
+  --color-btn-npm-hover: #ab2e2d;
+  --color-btn-gpt: #10a37f;
+  --color-btn-gpt-hover: #0d8c6d;
+  --color-btn-app: #1d4ed8; /* Darkened blue for app buttons to meet contrast requirements */
+  --color-btn-app-hover: #1e40af;
   
   /* Spacing system */
   --space-xs: 0.5rem;
@@ -62,36 +67,24 @@
     /* Dark mode colors with improved contrast */
     --color-bg: #111827;
     --color-bg-card: #1f2937;
-    
-    /* Increased contrast for text elements */
-    --color-text: #f9fafb; /* Brighter white for main text */
-    --color-text-secondary: #e2e8f0; /* Much lighter secondary text for better contrast */
-    
-    /* Brighter primary color for better visibility */
-    --color-primary: #a5b4fc; /* Lighter indigo */
-    --color-primary-accent: #c7d2fe; /* Even lighter for accents */
-    
-    /* Better contrast for primary text on dark background */
+    --color-text: #f9fafb;
+    --color-text-secondary: #e2e8f0;
+    --color-primary: #a5b4fc;
+    --color-primary-accent: #c7d2fe;
     --color-text-on-primary: #000000;
-    
-    /* Higher contrast borders */
     --color-border: #4b5563;
-    
     --color-shadow: rgba(149, 157, 255, 0.16);
-    
-    /* Improved dark mode icon visibility */
-    --color-icon-bg: rgba(55, 65, 81, 0.9); /* Slightly lighter bg */
-    --color-icon: #c7d2fe; /* Bright icon color */
-    --color-icon-border: rgba(255, 255, 255, 0.25); /* More visible border */
-    
-    /* Adjusted link colors */
-    --color-link-hover: #ddd6fe; /* Lighter hover for better contrast */
-    
-    /* Improve contrast for disabled elements */
+    --color-icon-bg: rgba(55, 65, 81, 0.9);
+    --color-icon: #c7d2fe;
+    --color-icon-border: rgba(255, 255, 255, 0.25);
+    --color-link-hover: #ddd6fe;
     --color-disabled: #9ca3af;
-    
-    /* High contrast text for important elements */
     --color-text-high-contrast: #ffffff;
+
+    /* Adjusted button colors for dark mode */
+    --color-btn-app: #1d4ed8; /* Darkened blue for better contrast with white text */
+    --color-btn-app-hover: #3b82f6;
+    --color-btn-gpt-hover: #34d399; /* Brighter hover for GPT button */
 
     /* CTA section dark mode colors */
     --color-cta-text: #ffffff;
@@ -101,43 +94,7 @@
   }
 }
 
-/* Add explicit color overrides for specific dark mode elements */
-@media (prefers-color-scheme: dark) {
-  .filter-btn {
-    /* Darker background with higher contrast text */
-    background-color: #374151;
-    color: #f3f4f6;
-  }
-  
-  .filter-btn.active {
-    /* Make active buttons more visible with better contrast */
-    background-color: var(--color-primary);
-    color: #000000; /* Black text on light primary background */
-  }
-  
-  .tech-tag {
-    /* Improve tag visibility in dark mode */
-    background-color: rgba(165, 180, 252, 0.2);
-    color: #e2e8f0;
-  }
-  
-  /* Social links in dark mode - better visibility */
-  .social-links a {
-    background-color: rgba(165, 180, 252, 0.2);
-  }
-  
-  /* Improved button contrast in dark mode */
-  .btn-secondary {
-    border-width: 2px; /* Thicker borders for better visibility */
-  }
-  
-  /* Emphasized CTA sections to maintain contrast */
-  .cta-section .btn-primary {
-    color: #111827; /* Dark text on light button for contrast */
-    font-weight: 700;
-  }
-}
-
+/* Common styles and resets */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -220,15 +177,20 @@ body {
   text-align: center;
 }
 
-/* Link and button styles */
+/* Link and button styles - CONSOLIDATED */
 a {
   color: var(--color-primary);
   text-decoration: none;
   transition: color var(--transition-fast);
 }
 
-a:hover {
+a:hover, a:focus {
   color: var(--color-primary-accent);
+}
+
+a:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }
 
 button {
@@ -239,6 +201,7 @@ button {
   font-size: inherit;
 }
 
+/* Base button style */
 .btn {
   display: inline-flex;
   align-items: center;
@@ -249,12 +212,21 @@ button {
   transition: all var(--transition-fast);
   text-decoration: none;
   gap: 0.5rem;
+  position: relative; /* For focus styling */
 }
 
+/* Focus state for all buttons */
+.btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.4);
+}
+
+/* Button variants - PRIMARY */
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-text-on-primary, white);
   font-weight: 600;
+  border: none;
 }
 
 .btn-primary:hover {
@@ -263,6 +235,7 @@ button {
   box-shadow: 0 4px 12px var(--color-shadow);
 }
 
+/* Button variants - SECONDARY */
 .btn-secondary {
   background-color: transparent;
   border: 2px solid var(--color-primary);
@@ -275,28 +248,73 @@ button {
   transform: translateY(-2px);
 }
 
+/* Specialized button types - GITHUB */
 .btn-github {
-  background-color: #24292e;
-  color: white;
+  background-color: var(--color-btn-github);
+  color: var(--color-text-light);
+  border: none;
 }
 
 .btn-github:hover {
-  background-color: #1a1e22;
-  color: white;
+  background-color: var(--color-btn-github-hover);
+  color: var(--color-text-light);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
+/* Specialized button types - LIVE DEMO */
 .btn-live {
   background-color: var(--color-primary);
-  color: white;
+  color: var(--color-text-on-primary);
+  border: none;
 }
 
 .btn-live:hover {
   background-color: var(--color-primary-accent);
-  color: white;
+  color: var(--color-text-on-primary);
   transform: translateY(-2px);
   box-shadow: 0 4px 12px var(--color-shadow);
+}
+
+/* Specialized button types - NPM */
+.btn-npm {
+  background-color: var(--color-btn-npm);
+  color: var(--color-text-light);
+  border: none;
+}
+
+.btn-npm:hover {
+  background-color: var(--color-btn-npm-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(203, 56, 55, 0.25);
+}
+
+/* Specialized button types - GPT */
+.btn-gpt {
+  background-color: var(--color-btn-gpt);
+  color: var(--color-text-light);
+  border: none;
+}
+
+.btn-gpt:hover {
+  background-color: var(--color-btn-gpt-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(16, 163, 127, 0.25);
+}
+
+/* Specialized button types - MOBILE/DESKTOP APP */
+.btn-mobile, .btn-desktop {
+  background-color: var(--color-btn-app);
+  color: var(--color-text-light);
+  border: none;
+  /* Add a subtle shadow for better visual distinction */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-mobile:hover, .btn-desktop:hover {
+  background-color: var(--color-btn-app-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 /* Card styles */
@@ -311,6 +329,63 @@ button {
 .card:hover {
   transform: translateY(-5px);
   box-shadow: 0 10px 25px var(--color-shadow);
+}
+
+/* CTA section - CONSOLIDATED */
+.cta-section {
+  text-align: center;
+  background-color: var(--color-primary);
+  color: var(--color-text-on-primary);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-md);
+  margin: var(--space-xl) auto;
+  max-width: 900px;
+  box-shadow: 0 4px 20px var(--color-shadow);
+  border: 1px solid var(--color-cta-border, transparent);
+}
+
+.cta-section h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-sm);
+  color: var(--color-cta-text, white);
+  font-weight: 700;
+}
+
+.cta-section p {
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+  color: var(--color-cta-text-secondary, rgba(255, 255, 255, 0.9));
+  font-weight: 500;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+}
+
+.cta-section .btn-primary {
+  background-color: white;
+  color: var(--color-primary);
+  border: 2px solid white;
+  font-weight: 700;
+}
+
+.cta-section .btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.cta-section .btn-secondary {
+  background-color: transparent;
+  border: 2px solid var(--color-cta-btn-border, white);
+  color: var(--color-cta-text, white);
+  font-weight: 600;
+}
+
+.cta-section .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 /* Section styles */
@@ -333,6 +408,19 @@ button {
   border-radius: var(--radius-md);
   color: #ef4444;
   margin: var(--space-lg) 0;
+}
+
+/* Accessibility helper */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* Responsive adjustments */
@@ -359,11 +447,70 @@ button {
     font-size: var(--font-size-xl);
     margin-bottom: var(--space-md);
   }
+  
+  .cta-buttons {
+    flex-direction: column;
+    gap: var(--space-sm);
+    max-width: 300px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 480px) {
   .btn {
     padding: 0.6rem 1.2rem;
     font-size: var(--font-size-sm);
+  }
+}
+
+/* Dark mode refinements */
+@media (prefers-color-scheme: dark) {
+  .filter-btn {
+    background-color: #374151;
+    color: #f3f4f6;
+    font-weight: 600;
+  }
+  
+  .filter-btn.active {
+    background-color: var(--color-primary);
+    color: #000000;
+  }
+  
+  .tech-tag {
+    background-color: rgba(165, 180, 252, 0.2);
+    color: #e2e8f0;
+  }
+  
+  .social-links a {
+    background-color: rgba(165, 180, 252, 0.2);
+  }
+  
+  .btn-secondary {
+    border-width: 2px;
+  }
+  
+  .cta-section {
+    background-color: #4338ca;
+    border-color: rgba(255, 255, 255, 0.2);
+  }
+  
+  .cta-section h2 {
+    color: #ffffff;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  
+  .cta-section p {
+    color: rgba(255, 255, 255, 0.95);
+  }
+  
+  .cta-section .btn-primary {
+    color: #000000;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+  }
+  
+  .cta-section .btn-secondary {
+    color: #ffffff;
+    border-color: rgba(255, 255, 255, 0.8);
   }
 }

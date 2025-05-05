@@ -13,6 +13,7 @@
       "path": "/projects/evergreen-ils",
       "featured": true,
       "github": "https://github.com/IanSkelskey/Evergreen",
+      "accentColor": "#0d7764",
       "links": [
         {
           "title": "Evergreen 3.11",
@@ -37,6 +38,10 @@
         {
           "title": "Evergreen Website",
           "url": "https://evergreen-ils.org/"
+        },
+        {
+          "title": "Live Demo",
+          "url": "https://demo.evergreencatalog.com/"
         }
       ],
       "content": [
@@ -67,6 +72,12 @@
       "skills": ["Photoshop", "Game Art", "UI Design"],
       "featured": false,
       "github": "https://github.com/IanSkelskey/oot-community-retexture",
+      "links": [
+        {
+          "title": "Download",
+          "url": "https://github.com/IanSkelskey/oot-community-retexture/releases/latest"
+        }
+      ],
       "content": [
         {
           "type": "paragraph",
@@ -87,16 +98,21 @@
       "icon": "fieldDay",
       "date": "2022",
       "github": "https://github.com/Field-Day-2022",
-      "pwaUrl": "https://asu-field-day-pwa.web.app/",
-      "webUiUrl": "https://asu-field-day-webui.web.app/",
-      "categories": ["Web Development", "Research"],
+      "mobileAppUrl": "https://asu-field-day-pwa.web.app/",
+      "desktopAppUrl": "https://asu-field-day-webui.web.app/",
+      "categories": ["Web Development", "Research", "Education"],
       "thumbnail": "/src/assets/projects/fieldday/lizard.webp",
       "skills": ["JavaScript", "React", "Tailwind", "Firebase", "Framer Motion", "Vite"],
       "featured": true,
+      "accentColor": "#8C1D40",
       "links": [
         {
           "title": "Documentation",
           "url": "https://field-day-2022.github.io/"
+        },
+        {
+          "title": "ASU Software Engineering",
+          "url": "https://degrees.apps.asu.edu/bachelors/major/ASU00/TSSERBS/software-engineering-bs"
         }
       ],
       "content": [
@@ -107,6 +123,10 @@
         {
           "type": "paragraph",
           "content": "The project was sponsored by Dr. Heather Bateman, a biology professor at ASU, to support wildlife research and conservation efforts in Arizona. My specific contributions included UI/UX design, implementing the desktop interface with React and Tailwind, and integrating Firebase for data management."
+        },
+        {
+          "type": "paragraph",
+          "content": "This project represented the culmination of my Software Engineering degree at ASU, where I applied the skills and knowledge gained throughout my academic journey to create a real-world solution with practical applications in wildlife conservation."
         }
       ]
     },
@@ -119,11 +139,20 @@
       "icon": "gift",
       "date": "2023",
       "github": "https://github.com/IanSkelskey/toy.drive",
-      "deploymentUrl": "https://ianskelskey.github.io/toy.drive/",
       "categories": ["Web Development", "Community"],
       "thumbnail": "/src/assets/projects/toydrive/thumbnail.webp",
       "skills": ["React", "Tailwind", "Firebase", "Illustrator"],
       "featured": true,
+      "links": [
+        {
+          "title": "Live Website",
+          "url": "https://ianskelskey.github.io/toy.drive/"
+        },
+        {
+          "title": "Ways to Give",
+          "url": "https://www.connecticutchildrensfoundation.org/ways-give"
+        }
+      ],
       "content": [
         {
           "type": "paragraph",
@@ -148,6 +177,16 @@
       "thumbnail": "/src/assets/projects/gd50/thumbnail.webp",
       "skills": ["Lua", "LÖVE2D", "Aseprite", "Game Design"],
       "featured": true,
+      "links": [
+        {
+          "title": "Course Page",
+          "url": "https://www.edx.org/learn/game-development/harvard-university-cs50-s-introduction-to-game-development"
+        },
+        {
+          "title": "Course Material",
+          "url": "https://cs50.harvard.edu/games/2018/"
+        }
+      ],
       "content": [
         {
           "type": "paragraph",
@@ -171,6 +210,8 @@
       "thumbnail": "/src/assets/projects/plist/thumbnail.webp",
       "skills": ["Spotify API", "OpenAI", "Generative AI", "Custom GPT"],
       "featured": true,
+      "accentColor": "#10a37f",
+      "gptUrl": "https://chatgpt.com/g/g-ckc82O089-playlist-assistant",
       "content": [
         {
           "type": "paragraph",
@@ -194,6 +235,17 @@
       "thumbnail": "/src/assets/projects/malik/thumbnail.webp",
       "skills": ["Java", "Aseprite", "Minecraft Modding", "Audio Integration"],
       "featured": false,
+      "github": "https://github.com/IanSkelskey/Masks-of-Malik-Minecraft-Mod",
+      "links": [
+        {
+          "title": "Download Mod",
+          "url": "https://www.curseforge.com/minecraft/mc-mods/masks-of-malik"
+        },
+        {
+          "title": "Listen on Spotify",
+          "url": "https://open.spotify.com/artist/43OxwnQJAGF2yNdWIsPbGf?si=WCRe_PdhTaSib2gEmId38g"
+        }
+      ],
       "content": [
         {
           "type": "paragraph",
@@ -214,16 +266,11 @@
       "icon": "terminal",
       "date": "2023",
       "github": "https://github.com/IanSkelskey/evergit",
+      "npmUrl": "https://www.npmjs.com/package/evergit",
       "categories": ["Tools", "Generative AI"],
       "thumbnail": "/src/assets/projects/evergit/thumbnail.png",
       "skills": ["TypeScript", "CLI", "npm", "Node.js"],
       "featured": false,
-      "links": [
-        {
-          "title": "npm Package",
-          "url": "https://www.npmjs.com/package/evergit"
-        }
-      ],
       "content": [
         {
           "type": "paragraph",
@@ -248,6 +295,12 @@
       "thumbnail": "/src/assets/projects/ps2-covers/thumbnail.png",
       "skills": ["Digital Preservation", "Image Editing", "Game History"],
       "featured": false,
+      "links": [
+        {
+          "title": "Browse Collection",
+          "url": "https://github.com/xlenore/ps2-covers/tree/main/covers"
+        }
+      ],
       "content": [
         {
           "type": "paragraph",

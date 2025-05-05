@@ -2,6 +2,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-sm) 0;
+  /* Define a default accent color that can be overridden */
+  --project-accent-color: var(--color-primary);
+  --project-accent-transparent: rgba(99, 102, 241, 0.1);
 }
 
 .project-hero {
@@ -15,7 +18,8 @@
 .project-hero-content h1 {
   font-size: var(--font-size-3xl);
   margin-bottom: var(--space-sm);
-  color: var(--color-primary);
+  /* Always use theme color for text to maintain contrast */
+  color: var(--color-text);
   line-height: 1.2;
 }
 
@@ -85,7 +89,8 @@
   left: 0;
   width: 60px;
   height: 3px;
-  background-color: var(--color-primary);
+  /* Use accent color for decorative elements only */
+  background-color: var(--project-accent-color);
 }
 
 .project-description p {
@@ -104,16 +109,18 @@
 
 .tech-badge {
   padding: 0.5rem 1rem;
-  background-color: rgba(99, 102, 241, 0.1);
+  /* Use transparent version of accent color for background */
+  background-color: var(--project-accent-transparent, rgba(99, 102, 241, 0.1));
   border-radius: var(--radius-full);
   font-size: var(--font-size-base);
   font-weight: 500;
-  color: var(--color-primary);
+  /* Always use theme color for text to ensure contrast */
+  color: var(--color-text);
   transition: background-color var(--transition-fast), transform var(--transition-fast);
 }
 
 .tech-badge:hover {
-  background-color: rgba(99, 102, 241, 0.2);
+  background-color: var(--project-accent-transparent, rgba(99, 102, 241, 0.2));
   transform: translateY(-2px);
 }
 
@@ -155,6 +162,12 @@
 .nav-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 8px 24px var(--color-shadow);
+}
+
+/* Add focus styles for keyboard navigation */
+.nav-card:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--color-primary), 0 8px 24px var(--color-shadow);
 }
 
 .nav-image {
@@ -320,17 +333,108 @@
   transition: all var(--transition-fast);
 }
 
-.resources-list a:hover {
+.resources-list a:hover,
+.resources-list a:focus {
   background-color: rgba(99, 102, 241, 0.05);
 }
 
-.btn-pwa, .btn-webui {
-  background-color: var(--color-accent);
-  color: var(--color-text-light);
+.resources-list a:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary);
 }
 
-.btn-pwa:hover, .btn-webui:hover {
-  background-color: var(--color-accent-dark);
+.university-badge {
+  display: inline-flex;
+  align-items: center;
+  margin-top: var(--space-md);
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: white;
+  background-color: var(--project-accent-color);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Replace ASU specific styles with more general accent-based rules */
+.accent-button {
+  background-color: var(--project-accent-color);
+  color: white;
+}
+
+.accent-button:hover {
+  background-color: color-mix(in srgb, var(--project-accent-color) 85%, black);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+/* Remove ASU-specific styles */
+.project-detail.asu-project .btn-mobile,
+.project-detail.asu-project .btn-desktop {
+  /* These styles are now handled by the dynamic accent color */
+}
+
+/* Base button style */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+/* Project-specific buttons that should use accent color */
+.project-links .btn-mobile,
+.project-links .btn-desktop,
+.project-links .btn-gpt {
+  background-color: var(--project-accent-color, var(--color-primary));
+  color: white;
+}
+
+.project-links .btn-mobile:hover,
+.project-links .btn-desktop:hover,
+.project-links .btn-gpt:hover {
+  background-color: color-mix(in srgb, var(--project-accent-color, var(--color-primary)) 85%, black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
+}
+
+/* Keep GitHub button with standardized dark style for consistency */
+.btn-github {
+  background-color: var(--color-btn-github, #24292e);
+  color: white;
+}
+
+.btn-github:hover {
+  background-color: var(--color-btn-github-hover, #1a1e22);
+}
+
+/* Keep npm button with its brand color */
+.btn-npm {
+  background-color: var(--color-btn-npm, #cb3837);
+  color: white;
+}
+
+.btn-npm:hover {
+  background-color: var(--color-btn-npm-hover, #ab2e2d);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(203, 56, 55, 0.25);
+}
+
+/* Live demo links with accent color */
+.btn-live {
+  background-color: var(--project-accent-color, var(--color-primary));
+  color: white;
+}
+
+.btn-live:hover {
+  background-color: color-mix(in srgb, var(--project-accent-color, var(--color-primary)) 85%, black);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 1024px) {
@@ -394,5 +498,18 @@
   .tech-badge {
     padding: 0.4rem 0.8rem;
     font-size: var(--font-size-sm);
+  }
+}
+
+/* Specific dark mode adjustments for accent colors */
+@media (prefers-color-scheme: dark) {
+  /* In dark mode, ensure tech badges have enough contrast */
+  .tech-badge {
+    background-color: rgba(99, 102, 241, 0.2);
+    color: var(--color-text);
+  }
+  
+  .tech-badge:hover {
+    background-color: rgba(99, 102, 241, 0.3);
   }
 }
