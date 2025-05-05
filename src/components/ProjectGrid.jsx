@@ -2,13 +2,29 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ProjectGrid.css';
+import IconRenderer from './IconRenderer';
 
 const ProjectGrid = ({ projects }) => {
   const [filter, setFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
   const [isFiltering, setIsFiltering] = useState(false);
   
-  const categories = ['all', ...new Set(projects.map(project => project.category))];
+  // Extract all unique categories from projects
+  const allCategories = projects.reduce((cats, project) => {
+    const categories = Array.isArray(project.categories) 
+      ? project.categories 
+      : [project.category]; // Support both old and new format
+      
+    categories.forEach(cat => {
+      if (cat && !cats.includes(cat)) {
+        cats.push(cat);
+      }
+    });
+    return cats;
+  }, []);
+  
+  // Add 'All' category at the beginning
+  const categories = ['all', ...allCategories].filter(Boolean);
 
   useEffect(() => {
     // Set filtering state to show animation cues
@@ -18,8 +34,14 @@ const ProjectGrid = ({ projects }) => {
     const filterTimeout = setTimeout(() => {
       setFilteredProjects(
         filter === 'all' 
-        ? projects 
-        : projects.filter(project => project.category === filter)
+          ? projects 
+          : projects.filter(project => {
+              const projectCategories = Array.isArray(project.categories) 
+                ? project.categories 
+                : [project.category]; // Support both old and new format
+              
+              return projectCategories.includes(filter);
+            })
       );
       setIsFiltering(false);
     }, 300);
@@ -92,6 +114,11 @@ const ProjectGrid = ({ projects }) => {
                   exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
                 >
                   <Link to={project.path} className="project-link">
+                    {project.icon && (
+                      <div className="project-icon">
+                        <IconRenderer icon={project.icon} />
+                      </div>
+                    )}
                     <div className="project-image-container">
                       <img 
                         src={project.thumbnail || `https://via.placeholder.com/600x400?text=${encodeURIComponent(project.title)}`}

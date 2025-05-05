@@ -246,6 +246,32 @@
   font-size: var(--font-size-lg);
 }
 
+.project-icon {
+  position: absolute;
+  top: var(--space-sm);
+  right: var(--space-sm);
+  width: 32px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-primary);
+  z-index: 2;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover .project-icon {
+  transform: scale(1.1);
+}
+
+.project-icon svg {
+  width: 18px;
+  height: 18px;
+}
+
 @media (max-width: 1024px) {
   .project-grid {
     gap: var(--space-lg);

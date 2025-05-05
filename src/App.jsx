@@ -25,7 +25,19 @@ function App() {
       fetch('/src/data/socialLinks.json').then((res) => res.json()),
     ])
       .then(([projectsData, about, social]) => {
-        setProjects(projectsData.projects || []);
+        // Process projects to ensure consistent format (migrate from single category to categories array)
+        const processedProjects = (projectsData.projects || []).map((project) => {
+          // If project has category but not categories, convert to array
+          if (project.category && !project.categories) {
+            return {
+              ...project,
+              categories: [project.category],
+            };
+          }
+          return project;
+        });
+
+        setProjects(processedProjects);
         setAboutData(about);
         setSocialData(social);
         setLoading(false);

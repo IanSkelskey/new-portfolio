@@ -1,6 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import IconRenderer from './IconRenderer';
 import './ProjectDetail.css';
 
 const ProjectDetail = ({ projects }) => {
@@ -41,6 +42,11 @@ const ProjectDetail = ({ projects }) => {
     return path.split('/').pop();
   };
   
+  // Get categories (supporting both old and new format)
+  const projectCategories = Array.isArray(project.categories) 
+    ? project.categories 
+    : [project.category];
+  
   return (
     <motion.div 
       className="project-detail"
@@ -51,11 +57,20 @@ const ProjectDetail = ({ projects }) => {
     >
       <section className="project-hero">
         <div className="project-hero-content">
+          {project.icon && (
+            <div className="project-hero-icon">
+              <IconRenderer icon={project.icon} />
+            </div>
+          )}
           <h1>{project.title}</h1>
           <p className="project-subtitle">{project.subtitle}</p>
           <div className="project-meta">
             <span className="project-date">{project.date}</span>
-            <span className="project-category">{project.category}</span>
+            <div className="project-categories">
+              {projectCategories.map(category => (
+                <span key={category} className="project-category">{category}</span>
+              ))}
+            </div>
           </div>
         </div>
         <div className="project-hero-image">
@@ -71,6 +86,15 @@ const ProjectDetail = ({ projects }) => {
           <h2>About the Project</h2>
           <p>{project.pageBlurb || project.description}</p>
           
+          {/* Display project content if available */}
+          {project.content && project.content.map((item, index) => {
+            if (item.type === 'paragraph') {
+              return <p key={index}>{item.content}</p>;
+            }
+            // Add more content types as needed
+            return null;
+          })}
+          
           <h2>Technologies Used</h2>
           <div className="tech-stack">
             {project.skills.map(skill => (
@@ -78,17 +102,49 @@ const ProjectDetail = ({ projects }) => {
             ))}
           </div>
           
-          <div className="project-links">
-            {project.github && (
-              <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-github">
-                GitHub Repository
-              </a>
-            )}
+          {/* Project links section */}
+          <div className="project-links-section">
+            <h2>Project Links</h2>
+            <div className="project-links">
+              {project.github && (
+                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-github">
+                  GitHub Repository
+                </a>
+              )}
+              
+              {project.deploymentUrl && (
+                <a href={project.deploymentUrl} target="_blank" rel="noopener noreferrer" className="btn btn-live">
+                  Live Demo
+                </a>
+              )}
+              
+              {project.pwaUrl && (
+                <a href={project.pwaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-pwa">
+                  PWA Version
+                </a>
+              )}
+              
+              {project.webUiUrl && (
+                <a href={project.webUiUrl} target="_blank" rel="noopener noreferrer" className="btn btn-webui">
+                  Web UI
+                </a>
+              )}
+            </div>
             
-            {project.deploymentUrl && (
-              <a href={project.deploymentUrl} target="_blank" rel="noopener noreferrer" className="btn btn-live">
-                Live Demo
-              </a>
+            {/* Additional links from the links array */}
+            {project.links && project.links.length > 0 && (
+              <div className="additional-links">
+                <h3>Additional Resources</h3>
+                <ul className="resources-list">
+                  {project.links.map((link, index) => (
+                    <li key={index}>
+                      <a href={link.url} target="_blank" rel="noopener noreferrer">
+                        {link.title}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             )}
           </div>
         </div>
