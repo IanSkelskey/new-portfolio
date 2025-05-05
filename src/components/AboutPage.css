@@ -203,32 +203,56 @@
   left: 0;
 }
 
-/* CTA section */
+/* CTA section - Improved contrast */
 .cta-section {
   text-align: center;
-  background-color: var(--color-bg-card);
+  background-color: var(--color-primary);
+  color: white; 
   border-radius: var(--radius-lg);
   padding: var(--space-xl) var(--space-md);
-  margin-bottom: var(--space-xl);
+  margin: var(--space-xl) auto;
+  max-width: 900px;
   box-shadow: 0 4px 20px var(--color-shadow);
 }
 
 .cta-section h2 {
   font-size: var(--font-size-xl);
   margin-bottom: var(--space-sm);
-  color: var(--color-text);
+  color: white;
 }
 
 .cta-section p {
   max-width: 600px;
   margin: 0 auto var(--space-lg);
-  color: var(--color-text-secondary);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .cta-buttons {
   display: flex;
   justify-content: center;
   gap: var(--space-md);
+}
+
+.cta-section .btn-primary {
+  background-color: white;
+  color: var(--color-primary);
+  border: 2px solid white;
+}
+
+.cta-section .btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+.cta-section .btn-secondary {
+  background-color: transparent;
+  border: 2px solid white;
+  color: white;
+}
+
+.cta-section .btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
 }
 
 /* Responsive adjustments */

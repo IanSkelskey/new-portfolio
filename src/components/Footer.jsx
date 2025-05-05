@@ -56,7 +56,8 @@ const Footer = ({ socialLinks = [] }) => {
         </div>
 
         <div className="copyright">
-          <p>&copy; {currentYear} Ian Skelskey. All rights reserved.</p>
+          <p>&copy; {currentYear} All rights reserved.</p>
+          <p>Made with ❤️ by Ian Skelskey.</p>
         </div>
       </div>
     </footer>

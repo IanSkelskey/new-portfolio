@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import './ProjectGrid.css';
-import IconRenderer from './IconRenderer';
+import ProjectCard from './ProjectCard';
 
 const ProjectGrid = ({ projects }) => {
   const [filter, setFilter] = useState('all');
@@ -97,53 +96,11 @@ const ProjectGrid = ({ projects }) => {
               </motion.div>
             ) : (
               filteredProjects.map((project, index) => (
-                <motion.div 
+                <ProjectCard 
                   key={project.path}
-                  className="project-card"
-                  layout
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ 
-                    opacity: 1, 
-                    y: 0,
-                    transition: { 
-                      delay: index * 0.05,
-                      duration: 0.35,
-                      ease: "easeOut"
-                    }
-                  }}
-                  exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.2 } }}
-                >
-                  <Link to={project.path} className="project-link">
-                    {project.icon && (
-                      <div className="project-icon">
-                        <IconRenderer icon={project.icon} />
-                      </div>
-                    )}
-                    <div className="project-image-container">
-                      <img 
-                        src={project.thumbnail || `https://via.placeholder.com/600x400?text=${encodeURIComponent(project.title)}`}
-                        alt={project.title}
-                        className="project-image"
-                        loading="lazy"
-                      />
-                      <div className="project-overlay">
-                        <span>View Project</span>
-                      </div>
-                    </div>
-                    <div className="project-info">
-                      <h3 className="project-title">{project.title}</h3>
-                      <p className="project-subtitle">{project.subtitle}</p>
-                      <div className="project-tech">
-                        {project.skills.slice(0, 3).map(skill => (
-                          <span key={skill} className="tech-tag">{skill}</span>
-                        ))}
-                        {project.skills.length > 3 && (
-                          <span className="tech-tag tech-tag-more">+{project.skills.length - 3}</span>
-                        )}
-                      </div>
-                    </div>
-                  </Link>
-                </motion.div>
+                  project={project}
+                  index={index}
+                />
               ))
             )}
           </AnimatePresence>

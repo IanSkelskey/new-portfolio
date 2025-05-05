@@ -7,6 +7,7 @@ import Header from './components/Header';
 import ProjectGrid from './components/ProjectGrid';
 import ProjectDetail from './components/ProjectDetail';
 import AboutPage from './components/AboutPage';
+import HomePage from './components/HomePage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 
@@ -57,7 +58,8 @@ function App() {
         <main className="content-container">
           {error && <div className="error-message">Error: {error}</div>}
           <Routes>
-            <Route path="/" element={<ProjectGrid projects={projects} />} />
+            <Route path="/" element={<HomePage projects={projects} socialData={socialData} />} />
+            <Route path="/projects" element={<ProjectGrid projects={projects} />} />
             <Route path="/about" element={<AboutPage aboutData={aboutData} socialData={socialData} />} />
             <Route path="/projects/:projectPath" element={<ProjectDetail projects={projects} />} />
             <Route path="*" element={<Navigate to="/" />} />

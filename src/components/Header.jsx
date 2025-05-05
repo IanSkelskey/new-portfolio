@@ -17,9 +17,10 @@ const Header = () => {
           <div className="bar"></div>
           <div className="bar"></div>
         </div>
-        <nav className={`main-nav ${menuOpen ? 'open' : ''}`}>
+        <nav className={`main-nav ${menuOpen ? 'open' : ''}`} aria-label="Main navigation">
           <ul>
-            <li><Link to="/" onClick={() => setMenuOpen(false)}>Projects</Link></li>
+            <li><Link to="/" onClick={() => setMenuOpen(false)}>Home</Link></li>
+            <li><Link to="/projects" onClick={() => setMenuOpen(false)}>Projects</Link></li>
             <li><Link to="/about" onClick={() => setMenuOpen(false)}>About</Link></li>
             <li><Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link></li>
           </ul>
