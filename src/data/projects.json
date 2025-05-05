@@ -135,6 +135,60 @@
       "description": "A mod for Minecraft made for the band Masks of Malik. Contains a custom music disc with the band's music. And some paintings of the logo and a cat.",
       "thumbnail": "/src/assets/projects/malik/thumbnail.webp",
       "skills": ["java", "aseprite"]
+    },
+    {
+      "title": "evergit",
+      "path": "/projects/evergit",
+      "subtitle": "CLI Tool for Evergreen ILS Commit Messages",
+      "icon": "terminal",
+      "date": "2023",
+      "github": "https://github.com/IanSkelskey/evergit",
+      "category": "Developer Tool",
+      "pageBlurb": "A command-line interface tool to streamline commit message generation for Evergreen code contributions, helping maintain consistent and well-formatted commit messages.",
+      "description": "A CLI tool to streamline commit message generation for Evergreen code contributions, ensuring proper formatting and consistent style.",
+      "thumbnail": "/src/assets/projects/evergit/thumbnail.png",
+      "skills": ["TypeScript", "CLI", "npm", "Node.js"],
+      "featured": false,
+      "links": [
+        {
+          "title": "npm Package",
+          "url": "https://www.npmjs.com/package/evergit"
+        }
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "evergit is a specialized CLI tool I developed to help Evergreen ILS contributors create properly formatted commit messages. This tool helps maintain a consistent style across the project's commit history."
+        },
+        {
+          "type": "paragraph",
+          "content": "Published on npm, this tool streamlines the development workflow for contributors to the Evergreen Integrated Library System, making it easier to follow project conventions."
+        }
+      ]
+    },
+    {
+      "title": "PS2 Cover Art",
+      "path": "/projects/ps2-covers",
+      "subtitle": "PlayStation 2 Cover Art Preservation",
+      "icon": "image",
+      "date": "2023",
+      "github": "https://github.com/xlenore/ps2-covers",
+      "category": "Digital Preservation",
+      "pageBlurb": "Contributed PlayStation 2 cover art and corrections to a community-maintained repository of high-quality PS2 cover images for emulation and preservation purposes.",
+      "description": "Contributed to a community project preserving high-quality PlayStation 2 cover art for emulation and digital preservation.",
+      "thumbnail": "/src/assets/projects/ps2-covers/thumbnail.png",
+      "skills": ["Digital Preservation", "Image Editing", "Game History"],
+      "featured": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "I contributed to the PS2 Covers repository, a community-maintained collection of high-quality PlayStation 2 cover images intended for emulation and preservation purposes."
+        },
+        {
+          "type": "paragraph",
+          "content": "This project aims to preserve gaming history by maintaining a comprehensive database of accurate, high-resolution cover art for PlayStation 2 games, supporting both collectors and emulation enthusiasts."
+        }
+      ]
     }
   ]
 }
