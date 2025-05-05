@@ -9,10 +9,13 @@ const ProjectDetail = ({ projects }) => {
   const [project, setProject] = useState(null);
   const [nextProject, setNextProject] = useState(null);
   const [prevProject, setPrevProject] = useState(null);
+  const [loading, setLoading] = useState(true);
   
   // Find current, next and previous projects
   useEffect(() => {
+    setLoading(true);
     const currentProjectIndex = projects.findIndex(p => p.path === `/projects/${projectPath}`);
+    
     if (currentProjectIndex !== -1) {
       setProject(projects[currentProjectIndex]);
       
@@ -30,22 +33,38 @@ const ProjectDetail = ({ projects }) => {
         : projects[projects.length - 1]
       );
     }
+    
+    setLoading(false);
   }, [projectPath, projects]);
-  
-  if (!project) {
-    return <div className="loading">Project not found</div>;
-  }
   
   // Helper function to extract just the project identifier from path
   const getProjectIdentifier = (path) => {
-    // Extract the last part of the path (the identifier)
     return path.split('/').pop();
   };
+  
+  if (loading) {
+    return (
+      <div className="loading">
+        <span>Loading project details...</span>
+      </div>
+    );
+  }
+  
+  if (!project) {
+    return (
+      <div className="loading">
+        <span>Project not found</span>
+        <Link to="/projects" className="btn btn-primary">
+          Back to Projects
+        </Link>
+      </div>
+    );
+  }
   
   // Get categories (supporting both old and new format)
   const projectCategories = Array.isArray(project.categories) 
     ? project.categories 
-    : [project.category];
+    : project.category ? [project.category] : [];
   
   return (
     <motion.div 
@@ -65,12 +84,15 @@ const ProjectDetail = ({ projects }) => {
           <h1>{project.title}</h1>
           <p className="project-subtitle">{project.subtitle}</p>
           <div className="project-meta">
-            <span className="project-date">{project.date}</span>
-            <div className="project-categories">
-              {projectCategories.map(category => (
-                <span key={category} className="project-category">{category}</span>
-              ))}
-            </div>
+            {project.date && <span className="project-date">{project.date}</span>}
+            
+            {projectCategories.length > 0 && (
+              <div className="project-categories">
+                {projectCategories.map(category => (
+                  <span key={category} className="project-category">{category}</span>
+                ))}
+              </div>
+            )}
           </div>
         </div>
         <div className="project-hero-image">
@@ -84,69 +106,82 @@ const ProjectDetail = ({ projects }) => {
       <section className="project-content">
         <div className="project-description">
           <h2>About the Project</h2>
+          {/* Use pageBlurb if available, otherwise use description */}
           <p>{project.pageBlurb || project.description}</p>
           
-          {/* Display project content if available */}
-          {project.content && project.content.map((item, index) => {
-            if (item.type === 'paragraph') {
-              return <p key={index}>{item.content}</p>;
-            }
-            // Add more content types as needed
-            return null;
-          })}
+          {/* Display structured content if available */}
+          {project.content && project.content.length > 0 && 
+            project.content.map((item, index) => {
+              if (item.type === 'paragraph') {
+                return <p key={index}>{item.content}</p>;
+              }
+              // Handle other content types as needed
+              return null;
+            })
+          }
           
-          <h2>Technologies Used</h2>
-          <div className="tech-stack">
-            {project.skills.map(skill => (
-              <span key={skill} className="tech-badge">{skill}</span>
-            ))}
-          </div>
+          {/* Only show skills section if skills are available */}
+          {project.skills && project.skills.length > 0 && (
+            <>
+              <h2>Technologies Used</h2>
+              <div className="tech-stack">
+                {project.skills.map(skill => (
+                  <span key={skill} className="tech-badge">{skill}</span>
+                ))}
+              </div>
+            </>
+          )}
           
-          {/* Project links section */}
-          <div className="project-links-section">
-            <h2>Project Links</h2>
-            <div className="project-links">
-              {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-github">
-                  GitHub Repository
-                </a>
-              )}
+          {/* Project links section - only show if there are links available */}
+          {(project.github || project.deploymentUrl || project.pwaUrl || 
+            project.webUiUrl || (project.links && project.links.length > 0)) && (
+            <div className="project-links-section">
+              <h2>Project Links</h2>
               
-              {project.deploymentUrl && (
-                <a href={project.deploymentUrl} target="_blank" rel="noopener noreferrer" className="btn btn-live">
-                  Live Demo
-                </a>
-              )}
+              {/* Primary project links */}
+              <div className="project-links">
+                {project.github && (
+                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="btn btn-github">
+                    GitHub Repository
+                  </a>
+                )}
+                
+                {project.deploymentUrl && (
+                  <a href={project.deploymentUrl} target="_blank" rel="noopener noreferrer" className="btn btn-live">
+                    Live Demo
+                  </a>
+                )}
+                
+                {project.pwaUrl && (
+                  <a href={project.pwaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-pwa">
+                    PWA Version
+                  </a>
+                )}
+                
+                {project.webUiUrl && (
+                  <a href={project.webUiUrl} target="_blank" rel="noopener noreferrer" className="btn btn-webui">
+                    Web UI
+                  </a>
+                )}
+              </div>
               
-              {project.pwaUrl && (
-                <a href={project.pwaUrl} target="_blank" rel="noopener noreferrer" className="btn btn-pwa">
-                  PWA Version
-                </a>
-              )}
-              
-              {project.webUiUrl && (
-                <a href={project.webUiUrl} target="_blank" rel="noopener noreferrer" className="btn btn-webui">
-                  Web UI
-                </a>
+              {/* Additional links from the links array */}
+              {project.links && project.links.length > 0 && (
+                <div className="additional-links">
+                  <h3>Additional Resources</h3>
+                  <ul className="resources-list">
+                    {project.links.map((link, index) => (
+                      <li key={index}>
+                        <a href={link.url} target="_blank" rel="noopener noreferrer">
+                          {link.title}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
               )}
             </div>
-            
-            {/* Additional links from the links array */}
-            {project.links && project.links.length > 0 && (
-              <div className="additional-links">
-                <h3>Additional Resources</h3>
-                <ul className="resources-list">
-                  {project.links.map((link, index) => (
-                    <li key={index}>
-                      <a href={link.url} target="_blank" rel="noopener noreferrer">
-                        {link.title}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
+          )}
         </div>
       </section>
       

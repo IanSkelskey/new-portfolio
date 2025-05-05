@@ -230,6 +230,11 @@
   margin-top: var(--space-md);
 }
 
+.loading a.btn {
+  margin-top: var(--space-lg);
+  display: inline-block;
+}
+
 @keyframes loader-spin {
   to {
     transform: rotate(360deg);

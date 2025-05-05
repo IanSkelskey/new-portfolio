@@ -5,7 +5,6 @@
       "title": "Evergreen Integrated Library System",
       "subtitle": "A comprehensive open-source library system supporting large-scale library consortia",
       "description": "Contributed to maintaining and improving the Evergreen ILS, Connecticut's largest library consortium platform. Added code and documentation in five minor releases.",
-      "category": "OpenSource",
       "categories": ["OpenSource", "Web Development"],
       "date": "2024 - Present",
       "icon": "evergreen-ils",
@@ -13,6 +12,7 @@
       "thumbnail": "/src/assets/projects/evergreen-ils/thumbnail.png",
       "path": "/projects/evergreen-ils",
       "featured": true,
+      "github": "https://github.com/IanSkelskey/Evergreen",
       "links": [
         {
           "title": "Evergreen 3.11",
@@ -52,115 +52,169 @@
           "type": "paragraph",
           "content": "I now have code and documentation included in five minor releases: 3.11, 3.12, 3.13, 3.14, and 3.15, helping improve functionality and user experience for libraries across the consortium."
         }
-      ],
-      "github": "https://github.com/IanSkelskey/Evergreen"
+      ]
     },
     {
       "title": "Ocarina of Time Retexture",
       "path": "/projects/ocarina",
       "subtitle": "Community-driven Retexture Project",
+      "description": "A community-driven high resolution texture pack for The Legend of Zelda: Ocarina of Time.",
+      "pageBlurb": "I was part of a team that worked on the community-driven retexturing project for Zelda Ocarina of Time, specifically Zelda Ocarina of Time Community Retexture V7. My contributions include designing menus and HUD elements.",
       "icon": "ocarina",
       "date": "2014",
-      "category": "Game Development",
       "categories": ["Game Development", "Creative"],
-      "pageBlurb": "I was part of a team that worked on the community-driven retexturing project for Zelda Ocarina of Time, specifically Zelda Ocarina of Time Community Retexture V7. My contributions include designing menus and HUD elements.",
-      "description": "A community-driven high resolution texture pack for The Legend of Zelda: Ocarina of Time.",
       "thumbnail": "/src/assets/projects/oot/thumbnail.webp",
-      "skills": ["photoshop"],
+      "skills": ["Photoshop", "Game Art", "UI Design"],
       "featured": false,
-      "github": "https://github.com/IanSkelskey/oot-community-retexture"
+      "github": "https://github.com/IanSkelskey/oot-community-retexture",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "The Ocarina of Time Community Retexture project was a collaborative effort to create high-resolution textures for The Legend of Zelda: Ocarina of Time, one of the most beloved games in the series."
+        },
+        {
+          "type": "paragraph",
+          "content": "I contributed various UI elements and menu designs, focusing on maintaining the iconic look and feel while enhancing visual clarity for modern displays."
+        }
+      ]
     },
     {
       "title": "Field Day",
       "path": "/projects/fieldday",
       "subtitle": "Wildlife Research Data Management Tool",
+      "description": "A comprehensive data collection and management tool geared towards aiding wildlife researchers and conservationists in Arizona.",
+      "pageBlurb": "Field Day is my capstone project for my undergraduate degree at ASU. I was a member of a five person team that worked on the project. There were two components to this project: a PWA for mobile data collection in the field, and a data management tool designed for larger screens. My contributions include designing the UI, implementing the desktop UI using React and Tailwind, and connecting the backend to the desktop data management tool.",
       "icon": "fieldDay",
       "date": "2022",
       "github": "https://github.com/Field-Day-2022",
       "pwaUrl": "https://asu-field-day-pwa.web.app/",
       "webUiUrl": "https://asu-field-day-webui.web.app/",
+      "categories": ["Web Development", "Research"],
+      "thumbnail": "/src/assets/projects/fieldday/lizard.webp",
+      "skills": ["JavaScript", "React", "Tailwind", "Firebase", "Framer Motion", "Vite"],
+      "featured": true,
       "links": [
         {
           "title": "Documentation",
           "url": "https://field-day-2022.github.io/"
         }
       ],
-      "category": "Web App",
-      "categories": ["Web Development", "Research"],
-      "pageBlurb": "Field Day is my capstone project for my undergraduate degree at ASU. I was a member of a five person team that worked on the project. There were two components to this project: a PWA for mobile data collection in the field, and a data management tool designed for larger screens. My contributions include designing the UI, implementing the desktop UI using React and Tailwind, and connecting the backend to the desktop data management tool.",
-      "description": "A comprehensive data collection and management tool geared towards aiding wildlife researchers and conservationists in Arizona. Dr. Heather Bateman, a biology professor at ASU, sponsors the project. The tech stack for this project includes JavaScript, React, Tailwind, Firestore, Firebase, and Framer Motion.",
-      "thumbnail": "/src/assets/projects/fieldday/lizard.webp",
-      "skills": ["javascript", "react", "tailwind", "firebase", "framerMotion", "vite"],
-      "featured": true
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "Field Day was developed as my undergraduate capstone project at Arizona State University. Working with a team of five developers, we created two integrated applications: a Progressive Web App for field data collection and a web-based data management interface."
+        },
+        {
+          "type": "paragraph",
+          "content": "The project was sponsored by Dr. Heather Bateman, a biology professor at ASU, to support wildlife research and conservation efforts in Arizona. My specific contributions included UI/UX design, implementing the desktop interface with React and Tailwind, and integrating Firebase for data management."
+        }
+      ]
     },
     {
       "title": "Community Toy Drive",
       "path": "/projects/toydrive",
       "subtitle": "Give a toy, get the joy.",
+      "description": "A website for a local charity event that I helped organize. The website was used to collect donations and provide information about the event.",
+      "pageBlurb": "I have organized annual holiday toy drives since 2019. The drive sponsors Connecticut Children's Medical Center. In 2023, I built this website to help better organize the drives and provide information about events and sponsors.",
       "icon": "gift",
       "date": "2023",
       "github": "https://github.com/IanSkelskey/toy.drive",
       "deploymentUrl": "https://ianskelskey.github.io/toy.drive/",
-      "category": "Web App",
-      "categories": ["Web Development"],
-      "pageBlurb": "I have organized annual holiday toy drives since 2019. The drive sponsors Connecticut Children's Medical Center. In 2023, I built this website to help better organize the drives and provide information about events and sponsors.",
-      "description": "A website for a local charity event that I helped organize. The website was used to collect donations and provide information about the event.",
+      "categories": ["Web Development", "Community"],
       "thumbnail": "/src/assets/projects/toydrive/thumbnail.webp",
-      "skills": ["react", "tailwind", "firebase", "illustrator"],
-      "featured": true
+      "skills": ["React", "Tailwind", "Firebase", "Illustrator"],
+      "featured": true,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "Since 2019, I've organized annual holiday toy drives benefiting Connecticut Children's Medical Center. In 2023, I developed this website to better organize our events, provide consistent information, and streamline the donation process."
+        },
+        {
+          "type": "paragraph",
+          "content": "The site serves as a centralized hub for event details, sponsor recognition, and donation methods. The project combines my web development skills with my passion for community service."
+        }
+      ]
     },
     {
       "title": "GD50: Intro to Game Development",
       "path": "/projects/gd50",
       "subtitle": "Harvard/edX Course",
+      "description": "A course offered by Harvard University through edX. The course covers the fundamentals of game development using the Lua programming language and the LÖVE game engine.",
+      "pageBlurb": "A course offered by Harvard University through edX. The course covers the fundamentals of game development using the Lua programming language and the LÖVE game engine.",
       "icon": "gameController",
       "date": "Current",
       "github": "https://github.com/IanSkelskey/GD50-Submissions",
-      "category": "Game Development",
-      "pageBlurb": "A course offered by Harvard University through edX. The course covers the fundamentals of game development using the Lua programming language and the LÖVE game engine.",
-      "description": "A course offered by Harvard University through edX. The course covers the fundamentals of game development using the Lua programming language and the LÖVE game engine.",
+      "categories": ["Game Development", "Education"],
       "thumbnail": "/src/assets/projects/gd50/thumbnail.webp",
-      "skills": ["lua", "love2d", "aseprite"],
-      "featured": true
+      "skills": ["Lua", "LÖVE2D", "Aseprite", "Game Design"],
+      "featured": true,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "GD50 is Harvard's introduction to game development course that I'm currently taking through edX. The curriculum focuses on creating games with Lua and the LÖVE framework, covering fundamentals like collision detection, physics, and game state management."
+        },
+        {
+          "type": "paragraph",
+          "content": "Through this course, I'm building classic games like Pong, Breakout, and platformers while learning game development principles that apply across different engines and platforms."
+        }
+      ]
     },
     {
       "title": "AI Playlist Assistant",
       "path": "/projects/aiPlaylistAssistant",
       "subtitle": "A Custom GPT",
+      "description": "A custom GPT that analyzes playlist contents and generates artwork and descriptions for the playlist.",
+      "pageBlurb": "A pet project of mine that I've been working on in my free time. The goal of this project is to create a custom GPT that can analyze a playlist and generate artwork and descriptions for the playlist.",
       "icon": "recordVinyl",
       "date": "Current",
-      "category": "Generative AI",
       "categories": ["Generative AI", "Creative"],
-      "pageBlurb": "A pet project of mine that I've been working on in my free time. The goal of this project is to create a custom GPT that can analyze a playlist and generate artwork and descriptions for the playlist.",
-      "description": "A custom GPT that analyzes playlist contents and generates artwork and descriptions for the playlist.",
       "thumbnail": "/src/assets/projects/plist/thumbnail.webp",
-      "skills": ["spotify", "openAI"],
-      "featured": true
+      "skills": ["Spotify API", "OpenAI", "Generative AI", "Custom GPT"],
+      "featured": true,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "AI Playlist Assistant is a personal project combining my interests in music and generative AI. I'm developing a custom GPT that analyzes Spotify playlist content to generate thematic artwork and descriptions."
+        },
+        {
+          "type": "paragraph",
+          "content": "The assistant helps turn personal playlists into cohesive musical experiences by identifying themes, moods, and patterns across tracks, then producing visual and textual elements that complement the musical selection."
+        }
+      ]
     },
     {
       "title": "Masks of Malik Minecraft Mod",
       "path": "/projects/masksOfMalik",
       "subtitle": "Custom Music Disc and Paintings",
-      "icon": "cube",
-      "category": "Game Development",
-      "categories": ["Game Development", "Creative"],
-      "pageBlurb": "A mod for Minecraft made for the band Masks of Malik. Contains a custom music disc with the band's music. And some paintings of the logo and a cat.",
-      "date": "2023",
       "description": "A mod for Minecraft made for the band Masks of Malik. Contains a custom music disc with the band's music. And some paintings of the logo and a cat.",
+      "pageBlurb": "A mod for Minecraft made for the band Masks of Malik. Contains a custom music disc with the band's music. And some paintings of the logo and a cat.",
+      "icon": "cube",
+      "date": "2023",
+      "categories": ["Game Development", "Creative"],
       "thumbnail": "/src/assets/projects/malik/thumbnail.webp",
-      "skills": ["java", "aseprite"]
+      "skills": ["Java", "Aseprite", "Minecraft Modding", "Audio Integration"],
+      "featured": false,
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "I created this custom Minecraft mod for the band Masks of Malik, featuring their music integrated as collectible in-game music discs and custom paintings showcasing their logo and mascot."
+        },
+        {
+          "type": "paragraph",
+          "content": "The mod demonstrates both my Java programming skills and creative abilities, allowing players to discover and enjoy the band's music while playing Minecraft."
+        }
+      ]
     },
     {
       "title": "evergit",
       "path": "/projects/evergit",
       "subtitle": "CLI Tool for Evergreen ILS Commit Messages",
+      "description": "A CLI tool to streamline commit message generation for Evergreen code contributions, ensuring proper formatting and consistent style.",
+      "pageBlurb": "A command-line interface tool to streamline commit message generation for Evergreen code contributions, helping maintain consistent and well-formatted commit messages.",
       "icon": "terminal",
       "date": "2023",
       "github": "https://github.com/IanSkelskey/evergit",
-      "category": "Developer Tool",
       "categories": ["Tools", "Generative AI"],
-      "pageBlurb": "A command-line interface tool to streamline commit message generation for Evergreen code contributions, helping maintain consistent and well-formatted commit messages.",
-      "description": "A CLI tool to streamline commit message generation for Evergreen code contributions, ensuring proper formatting and consistent style.",
       "thumbnail": "/src/assets/projects/evergit/thumbnail.png",
       "skills": ["TypeScript", "CLI", "npm", "Node.js"],
       "featured": false,
@@ -185,13 +239,12 @@
       "title": "PS2 Cover Art",
       "path": "/projects/ps2-covers",
       "subtitle": "PlayStation 2 Cover Art Preservation",
+      "description": "Contributed to a community project preserving high-quality PlayStation 2 cover art for emulation and digital preservation.",
+      "pageBlurb": "Contributed PlayStation 2 cover art and corrections to a community-maintained repository of high-quality PS2 cover images for emulation and preservation purposes.",
       "icon": "image",
       "date": "2023",
       "github": "https://github.com/xlenore/ps2-covers",
-      "category": "Digital Preservation",
-      "categories": ["Game Development", "Creative"],
-      "pageBlurb": "Contributed PlayStation 2 cover art and corrections to a community-maintained repository of high-quality PS2 cover images for emulation and preservation purposes.",
-      "description": "Contributed to a community project preserving high-quality PlayStation 2 cover art for emulation and digital preservation.",
+      "categories": ["Game Development", "Creative", "Digital Preservation"],
       "thumbnail": "/src/assets/projects/ps2-covers/thumbnail.png",
       "skills": ["Digital Preservation", "Image Editing", "Game History"],
       "featured": false,
