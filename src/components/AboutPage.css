@@ -62,7 +62,7 @@
 
 .skill-category {
   background-color: var(--color-bg-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-lg) !important;
   padding: var(--space-md);
   box-shadow: 0 4px 12px var(--color-shadow);
   transition: transform var(--transition-base), box-shadow var(--transition-base);
@@ -92,11 +92,18 @@
 .skill-category li {
   font-size: var(--font-size-base);
   color: var(--color-text);
-  background-color: rgba(99, 102, 241, 0.08);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
   padding: 0.3rem 0.8rem;
-  border-radius: var(--radius-full);
+  border-radius: var(--radius-md);
   display: inline-block;
   margin-bottom: var(--space-xs);
+  transition: background-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.skill-category li:hover {
+  background-color: var(--color-bg-accent, rgba(99, 102, 241, 0.08));
+  transform: translateY(-2px);
 }
 
 /* Timeline section */

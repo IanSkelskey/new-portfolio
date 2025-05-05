@@ -102,7 +102,7 @@
       "desktopAppUrl": "https://asu-field-day-webui.web.app/",
       "categories": ["Web Development", "Research", "Education"],
       "thumbnail": "/src/assets/projects/fieldday/lizard.webp",
-      "skills": ["JavaScript", "React", "Tailwind", "Firebase", "Framer Motion", "Vite"],
+      "skills": ["JavaScript", "React", "Tailwind", "Firebase", "Framer Motion", "Vite", "Documentation"],
       "featured": true,
       "accentColor": "#8C1D40",
       "links": [
