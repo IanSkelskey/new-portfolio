@@ -13,9 +13,7 @@ function App() {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [darkMode, setDarkMode] = useState(() => {
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
-  });
+  // Remove darkMode state and toggle, use system preference only
 
   useEffect(() => {
     fetch('/src/data/projects.json')
@@ -33,18 +31,16 @@ function App() {
       });
   }, []);
 
-  useEffect(() => {
-    document.documentElement.classList.toggle('dark-mode', darkMode);
-  }, [darkMode]);
+  // Remove darkMode effect, use CSS only
 
-  const toggleDarkMode = () => setDarkMode(prev => !prev);
+
 
   if (loading) return <LoadingSpinner />;
 
   return (
     <Router>
-      <div className={`app-container ${darkMode ? 'dark-mode' : 'light-mode'}`}>
-        <Header darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
+      <div className="app-container">
+        <Header />
         <main className="content-container">
           {error && <div className="error-message">Error: {error}</div>}
           <Routes>
