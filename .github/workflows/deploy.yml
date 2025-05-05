@@ -4,21 +4,26 @@ on:
   push:
     branches:
       - main # Set this to the branch you want to deploy from
+  workflow_dispatch: # Allow manual triggering
+
+permissions:
+  contents: write # This is needed for the deployment action to work
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4 # Updated to latest version
 
       - name: Install Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4 # Updated to latest version
         with:
           node-version: "18" # Set this to the node version you are using
+          cache: 'npm' # Cache npm dependencies for faster builds
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci # Using ci instead of install for more reliable builds
 
       - name: Build
         run: npm run build
@@ -27,4 +32,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist # Changed from build to dist which is Vite's default output directory
+          cname: ${{ secrets.CNAME }} # Optional: If you have a custom domain
