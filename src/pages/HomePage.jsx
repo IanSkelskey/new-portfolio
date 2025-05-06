@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../components/ProjectCard';
 import './HomePage.css';
 
 const HomePage = ({ projects = [], socialLinks = [] }) => {

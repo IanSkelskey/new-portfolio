@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import './ProjectGrid.css';
-import ProjectCard from './ProjectCard';
+import './ProjectPage.css';
+import ProjectCard from '../components/ProjectCard';
 
 const ProjectGrid = ({ projects }) => {
   const [filter, setFilter] = useState('all');

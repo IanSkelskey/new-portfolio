@@ -311,6 +311,36 @@
           "content": "This project aims to preserve gaming history by maintaining a comprehensive database of accurate, high-resolution cover art for PlayStation 2 games, supporting both collectors and emulation enthusiasts."
         }
       ]
+    },
+    {
+      "title": "Portfolio Website",
+      "path": "/projects/portfolio",
+      "subtitle": "My personal portfolio website",
+      "description": "This portfolio website showcases my projects, skills, and experience. It is built using React, Vite, and Tailwind CSS.",
+      "pageBlurb": "This portfolio website showcases my projects, skills, and experience. It is built using React, Vite, and Tailwind CSS.",
+      "icon": "computer",
+      "date": "2023",
+      "github": "https://github.com/IanSkelskey/portfolio",
+      "categories": ["Web Development", "Creative"],
+      "thumbnail": "/src/assets/projects/portfolio/thumbnail.webp",
+      "skills": ["React", "Vite", "Tailwind CSS", "Framer Motion", "TypeScript"],
+      "featured": false,
+      "links": [
+        {
+          "title": "Live Website",
+          "url": "https://ianskelskey.github.io/portfolio/"
+        }
+      ],
+      "content": [
+        {
+          "type": "paragraph",
+          "content": "This portfolio website is a showcase of my projects, skills, and experience as a software engineer and designer. Built with React, Vite, and Tailwind CSS, it features a clean and modern design."
+        },
+        {
+          "type": "paragraph",
+          "content": "The site is fully responsive and optimized for performance, providing an engaging user experience across devices. It serves as a platform to highlight my work and connect with potential collaborators and employers."
+        }
+      ]
     }
   ]
 }

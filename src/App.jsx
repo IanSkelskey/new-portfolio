@@ -4,10 +4,10 @@ import './App.css';
 
 // Components
 import Header from './components/Header';
-import ProjectGrid from './components/ProjectGrid';
+import ProjectGrid from './pages/ProjectPage';
 import ProjectDetail from './components/ProjectDetail';
-import AboutPage from './components/AboutPage';
-import HomePage from './components/HomePage';
+import AboutPage from './pages/AboutPage';
+import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import SkillDetail from './components/SkillDetail';
