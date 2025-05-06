@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { gridContainer, itemFadeIn } from '../animations';
+import { gridContainer, itemFadeIn, staggerContainer } from '../animations';
 import './SkillGrid.css';
 
 const SkillGrid = ({ skillsData }) => {
@@ -23,10 +23,10 @@ const SkillGrid = ({ skillsData }) => {
           className="skill-category"
           variants={itemFadeIn(index)}
         >
-          <h3>{category}</h3>
-          <ul>
-            {skills.map(skill => (
-              <li key={skill.id}>
+          <motion.h3 variants={itemFadeIn(0)}>{category}</motion.h3>
+          <motion.ul variants={staggerContainer(0.02)}>
+            {skills.map((skill, idx) => (
+              <motion.li key={skill.id} variants={itemFadeIn(idx)}>
                 <Link 
                   to={`/skills/${skill.id}`} 
                   className="skill-link"
@@ -34,9 +34,9 @@ const SkillGrid = ({ skillsData }) => {
                 >
                   {skill.name}
                 </Link>
-              </li>
+              </motion.li>
             ))}
-          </ul>
+          </motion.ul>
         </motion.div>
       ))}
     </motion.div>

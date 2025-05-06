@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
+import { staggerContainer, itemFadeIn } from '../animations';
 import './CTASection.css';
 
 const CTASection = ({
@@ -11,35 +13,45 @@ const CTASection = ({
   accentColor,
 }) => {
   // Function to render a button (supports both Link and external anchor)
-  const renderButton = (buttonConfig, buttonType) => {
+  const renderButton = (buttonConfig, buttonType, index) => {
     if (!buttonConfig) return null;
 
     const { text, to, href, onClick, icon } = buttonConfig;
     const buttonClass = `btn btn-${buttonType}`;
+    const ButtonWrapper = motion.div;
+    
+    // Motion props for the button wrapper
+    const motionProps = {
+      variants: itemFadeIn(index),
+    };
 
     // If it's an internal link
     if (to) {
       return (
-        <Link to={to} className={buttonClass} onClick={onClick}>
-          {text}
-          {icon && <span className="button-icon">{icon}</span>}
-        </Link>
+        <ButtonWrapper {...motionProps}>
+          <Link to={to} className={buttonClass} onClick={onClick}>
+            {text}
+            {icon && <span className="button-icon">{icon}</span>}
+          </Link>
+        </ButtonWrapper>
       );
     }
 
     // If it's an external link
     if (href) {
       return (
-        <a 
-          href={href} 
-          className={buttonClass} 
-          onClick={onClick}
-          target={href.startsWith('http') ? '_blank' : undefined}
-          rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
-        >
-          {text}
-          {icon && <span className="button-icon">{icon}</span>}
-        </a>
+        <ButtonWrapper {...motionProps}>
+          <a 
+            href={href} 
+            className={buttonClass} 
+            onClick={onClick}
+            target={href.startsWith('http') ? '_blank' : undefined}
+            rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+          >
+            {text}
+            {icon && <span className="button-icon">{icon}</span>}
+          </a>
+        </ButtonWrapper>
       );
     }
 
@@ -50,19 +62,25 @@ const CTASection = ({
   const style = accentColor ? { '--cta-bg-color': accentColor } : {};
 
   return (
-    <section className={`cta-section ${className}`} style={style}>
+    <motion.section 
+      className={`cta-section ${className}`} 
+      style={style}
+      variants={staggerContainer(0.1)}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="cta-content">
-        {title && <h2>{title}</h2>}
-        {description && <p>{description}</p>}
+        {title && <motion.h2 variants={itemFadeIn(0)}>{title}</motion.h2>}
+        {description && <motion.p variants={itemFadeIn(1)}>{description}</motion.p>}
         
         {(primaryButton || secondaryButton) && (
-          <div className="cta-buttons">
-            {renderButton(primaryButton, 'primary')}
-            {renderButton(secondaryButton, 'secondary')}
-          </div>
+          <motion.div className="cta-buttons" variants={staggerContainer(0.08)}>
+            {primaryButton && renderButton(primaryButton, 'primary', 0)}
+            {secondaryButton && renderButton(secondaryButton, 'secondary', 1)}
+          </motion.div>
         )}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

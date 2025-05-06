@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { motion } from 'framer-motion';
-import { pageTransition, contentTransition } from '../animations';
+import { pageTransition, contentTransition, itemFadeIn, staggerContainer } from '../animations';
 import './PageWrapper.css';
 
 const PageWrapper = ({
@@ -12,37 +12,31 @@ const PageWrapper = ({
   className = '',
   headerClassName = ''
 }) => {
-  // Wrapper component - conditionally animate if specified
-  const Wrapper = animate ? motion.div : 'div';
-  const wrapperProps = animate ? {
-    initial: 'hidden',
-    animate: 'visible',
-    exit: 'exit',
-    variants: pageTransition
-  } : {};
-
-  // Inner content component - for child animations
-  const ContentWrapper = animate ? motion.div : 'div';
-  const contentProps = animate ? {
-    variants: contentTransition
-  } : {};
-
   return (
-    <Wrapper 
+    <motion.div 
       className={`page-wrapper page-width-${width} ${className}`} 
-      {...wrapperProps}
+      initial="hidden"
+      animate="visible"
+      exit="exit"
+      variants={pageTransition}
     >
       {(title || subtitle) && (
-        <header className={`page-header ${headerClassName}`}>
-          {title && <h1 className="page-title">{title}</h1>}
-          {subtitle && <p className="page-subtitle">{subtitle}</p>}
-        </header>
+        <motion.header 
+          className={`page-header ${headerClassName}`}
+          variants={staggerContainer(0.1)}
+        >
+          {title && <motion.h1 className="page-title" variants={itemFadeIn(0)}>{title}</motion.h1>}
+          {subtitle && <motion.p className="page-subtitle" variants={itemFadeIn(1)}>{subtitle}</motion.p>}
+        </motion.header>
       )}
 
-      <ContentWrapper className="page-content" {...contentProps}>
+      <motion.div 
+        className="page-content" 
+        variants={contentTransition}
+      >
         {children}
-      </ContentWrapper>
-    </Wrapper>
+      </motion.div>
+    </motion.div>
   );
 };
 
