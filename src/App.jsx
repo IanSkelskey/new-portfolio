@@ -8,6 +8,7 @@ import ProjectGrid from './pages/ProjectPage';
 import ProjectDetail from './pages/ProjectDetail';
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage';
+import ContactPage from './pages/ContactPage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import SkillDetail from './pages/SkillDetail';
@@ -66,6 +67,7 @@ function App() {
             <Route path="/" element={<HomePage projects={projects} socialData={socialData} />} />
             <Route path="/projects" element={<ProjectGrid projects={projects} />} />
             <Route path="/about" element={<AboutPage aboutData={aboutData} skillsData={skillsData} socialData={socialData} />} />
+            <Route path="/contact" element={<ContactPage socialLinks={socialData?.socialLinks} />} />
             <Route path="/projects/:projectPath" element={<ProjectDetail projects={projects} skillsData={skillsData} />} />
             <Route path="/skills/:skillId" element={<SkillDetail skillsData={skillsData} projects={projects} />} />
             <Route path="/404" element={<NotFound />} />
