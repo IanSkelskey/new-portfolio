@@ -1,26 +1,10 @@
 .about-page {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  /* Remove the width and max-width as these are now handled by PageWrapper */
 }
 
+/* Remove the about-hero section as this is now handled by PageWrapper */
 .about-hero {
-  text-align: center;
-  margin-bottom: var(--space-2xl);
-  padding: var(--space-xl) 0;
-}
-
-.about-hero h1 {
-  font-size: var(--font-size-3xl);
-  color: var(--color-primary);
-  margin-bottom: var(--space-xs);
-  font-weight: 700;
-}
-
-.about-subtitle {
-  font-size: var(--font-size-xl);
-  color: var(--color-text-secondary);
-  margin-bottom: var(--space-md);
+  display: none;
 }
 
 .about-section {

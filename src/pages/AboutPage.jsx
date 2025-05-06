@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import PageWrapper from '../components/PageWrapper';
 import './AboutPage.css';
 
 const AboutPage = ({ aboutData, skillsData, socialData }) => {
@@ -45,14 +46,11 @@ const AboutPage = ({ aboutData, skillsData, socialData }) => {
   }, {});
 
   return (
-    <div className="about-page">
-      <section className="about-hero">
-        <div className="about-hero-content">
-          <h1>About Me</h1>
-          <p className="about-subtitle">{aboutData.profile.title}</p>
-        </div>
-      </section>
-
+    <PageWrapper 
+      title="About Me" 
+      subtitle={aboutData.profile.title}
+      className="about-page"
+    >
       <motion.section 
         className="about-section"
         initial="hidden"
@@ -145,7 +143,7 @@ const AboutPage = ({ aboutData, skillsData, socialData }) => {
           <a href="/projects" className="btn btn-secondary">View My Projects</a>
         </div>
       </section>
-    </div>
+    </PageWrapper>
   );
 };
 

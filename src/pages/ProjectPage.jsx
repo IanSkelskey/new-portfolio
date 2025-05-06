@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import PageWrapper from '../components/PageWrapper';
 import './ProjectPage.css';
 import ProjectCard from '../components/ProjectCard';
 
@@ -49,12 +50,11 @@ const ProjectGrid = ({ projects }) => {
   }, [filter, projects]);
 
   return (
-    <section className="project-grid-section">
-      <div className="section-intro">
-        <h2>My Work</h2>
-        <p>Explore my projects in web development, design, and more.</p>
-      </div>
-
+    <PageWrapper
+      title="My Work"
+      subtitle="Explore my projects in web development, design, and more."
+      animate={false} // Turn off PageWrapper animations to let the grid handle its own
+    >
       <div className="filter-controls">
         {categories.map(category => (
           <button 
@@ -106,7 +106,7 @@ const ProjectGrid = ({ projects }) => {
           </AnimatePresence>
         </motion.div>
       </motion.div>
-    </section>
+    </PageWrapper>
   );
 };
 

@@ -11,7 +11,7 @@ import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
 import SkillDetail from './components/SkillDetail';
-import NotFound from './components/NotFound';
+import NotFound from './pages/NotFound';
 
 function App() {
   const [projects, setProjects] = useState([]);
