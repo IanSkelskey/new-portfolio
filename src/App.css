@@ -332,63 +332,6 @@ button {
   box-shadow: 0 10px 25px var(--color-shadow);
 }
 
-/* CTA section - CONSOLIDATED */
-.cta-section {
-  text-align: center;
-  background-color: var(--color-primary);
-  color: var(--color-text-on-primary);
-  border-radius: var(--radius-lg);
-  padding: var(--space-xl) var(--space-md);
-  margin: var(--space-xl) auto;
-  max-width: 900px;
-  box-shadow: 0 4px 20px var(--color-shadow);
-  border: 1px solid var(--color-cta-border, transparent);
-}
-
-.cta-section h2 {
-  font-size: var(--font-size-xl);
-  margin-bottom: var(--space-sm);
-  color: var(--color-cta-text, white);
-  font-weight: 700;
-}
-
-.cta-section p {
-  max-width: 600px;
-  margin: 0 auto var(--space-lg);
-  color: var(--color-cta-text-secondary, rgba(255, 255, 255, 0.9));
-  font-weight: 500;
-}
-
-.cta-buttons {
-  display: flex;
-  justify-content: center;
-  gap: var(--space-md);
-}
-
-.cta-section .btn-primary {
-  background-color: white;
-  color: var(--color-primary);
-  border: 2px solid white;
-  font-weight: 700;
-}
-
-.cta-section .btn-primary:hover {
-  background-color: rgba(255, 255, 255, 0.9);
-  transform: translateY(-2px);
-}
-
-.cta-section .btn-secondary {
-  background-color: transparent;
-  border: 2px solid var(--color-cta-btn-border, white);
-  color: var(--color-cta-text, white);
-  font-weight: 600;
-}
-
-.cta-section .btn-secondary:hover {
-  background-color: rgba(255, 255, 255, 0.15);
-  transform: translateY(-2px);
-}
-
 /* Section styles */
 .section {
   margin-bottom: var(--space-xl);

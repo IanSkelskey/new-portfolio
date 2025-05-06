@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../components/PageWrapper';
 import SkillGrid from '../components/SkillGrid';
+import CTASection from '../components/CTASection';
 import './AboutPage.css';
 
 const AboutPage = ({ aboutData, skillsData, socialData }) => {
@@ -112,17 +113,12 @@ const AboutPage = ({ aboutData, skillsData, socialData }) => {
         </motion.div>
       </motion.section>
 
-      <section className="cta-section">
-        <h2>Let's Connect</h2>
-        <p>
-          I'm always interested in new projects, collaborations, or just chatting about 
-          technology and creative work.
-        </p>
-        <div className="cta-buttons">
-          <a href="/contact" className="btn btn-primary">Contact Me</a>
-          <a href="/projects" className="btn btn-secondary">View My Projects</a>
-        </div>
-      </section>
+      <CTASection
+        title="Let's Connect"
+        description="I'm always interested in new projects, collaborations, or just chatting about technology and creative work."
+        primaryButton={{ text: 'Contact Me', to: '/contact' }}
+        secondaryButton={{ text: 'View My Projects', to: '/projects' }}
+      />
     </PageWrapper>
   );
 };

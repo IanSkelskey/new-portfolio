@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import DetailWrapper from '../components/DetailWrapper';
+import CTASection from '../components/CTASection';
 import './SkillDetail.css';
 
 const SkillDetail = ({ skillsData, projects }) => {
@@ -133,13 +134,11 @@ const SkillDetail = ({ skillsData, projects }) => {
         </div>
       </section>
       
-      <section className="skill-cta">
-        <h2 className="centered">Interested in my work with {skill.name}?</h2>
-        <div className="cta-buttons">
-          <Link to="/projects" className="btn btn-primary">Explore All Projects</Link>
-          <Link to="/contact" className="btn btn-secondary">Get In Touch</Link>
-        </div>
-      </section>
+      <CTASection 
+        title={`Interested in my work with ${skill.name}?`}
+        primaryButton={{ text: 'Explore All Projects', to: '/projects' }}
+        secondaryButton={{ text: 'Get In Touch', to: '/contact' }}
+      />
     </DetailWrapper>
   );
 };

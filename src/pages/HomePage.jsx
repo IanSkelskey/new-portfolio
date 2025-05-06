@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import CTASection from '../components/CTASection';
 import { FaArrowRight, FaGithub, FaLinkedin } from 'react-icons/fa';
 import ProjectCard from '../components/ProjectCard';
 import './HomePage.css';
@@ -119,21 +120,19 @@ const HomePage = ({ projects = [], socialLinks = [] }) => {
         </section>
       )}
 
-      {/* CTA Section - Updated for better contrast */}
-      <section className="cta-section">
-        <div className="cta-content">
-          <h2>Let's Build Something Together</h2>
-          <p>I'm always interested in new opportunities and collaborations.</p>
-          <div className="cta-buttons">
-            <Link to="/about" className="btn btn-primary">
-              Learn More About Me
-            </Link>
-            <a href="mailto:contact@ianskelskey.com" className="btn btn-secondary">
-              Get In Touch
-            </a>
-          </div>
-        </div>
-      </section>
+      {/* CTA Section - Now using the reusable component */}
+      <CTASection 
+        title="Let's Build Something Together" 
+        description="I'm always interested in new opportunities and collaborations."
+        primaryButton={{ 
+          text: 'Learn More About Me',
+          to: '/about'
+        }}
+        secondaryButton={{ 
+          text: 'Get In Touch',
+          href: 'mailto:contact@ianskelskey.com'
+        }}
+      />
     </div>
   );
 };
