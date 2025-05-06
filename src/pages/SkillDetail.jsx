@@ -1,7 +1,8 @@
 import { useParams, Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import ProjectCard from './ProjectCard';
+import ProjectCard from '../components/ProjectCard';
+import DetailWrapper from '../components/DetailWrapper';
 import './SkillDetail.css';
 
 const SkillDetail = ({ skillsData, projects }) => {
@@ -55,7 +56,7 @@ const SkillDetail = ({ skillsData, projects }) => {
     );
   }
 
-  // Animation variants
+  // Animation variants for the project cards
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -76,38 +77,14 @@ const SkillDetail = ({ skillsData, projects }) => {
   };
   
   return (
-    <div className="skill-detail-page">
-      <section className="skill-hero">
-        <div className="skill-hero-content">
-          <Link to="/about" className="back-link">
-            ← Back to About Me
-          </Link>
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            {skill.name}
-          </motion.h1>
-          <motion.div 
-            className="skill-meta"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.2, duration: 0.5 }}
-          >
-            <span className="skill-category">{skill.category}</span>
-          </motion.div>
-          <motion.p 
-            className="skill-description"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.3, duration: 0.5 }}
-          >
-            {skill.description}
-          </motion.p>
-        </div>
-      </section>
-      
+    <DetailWrapper
+      title={skill.name}
+      subtitle={skill.description}
+      backLink="/about"
+      backText="Back to About Me"
+      metadata={[skill.category]}
+      className="skill-detail-page"
+    >
       <motion.section 
         className="related-projects-section"
         variants={containerVariants}
@@ -157,13 +134,13 @@ const SkillDetail = ({ skillsData, projects }) => {
       </section>
       
       <section className="skill-cta">
-        <h2>Interested in my work with {skill.name}?</h2>
+        <h2 className="centered">Interested in my work with {skill.name}?</h2>
         <div className="cta-buttons">
           <Link to="/projects" className="btn btn-primary">Explore All Projects</Link>
           <Link to="/contact" className="btn btn-secondary">Get In Touch</Link>
         </div>
       </section>
-    </div>
+    </DetailWrapper>
   );
 };
 

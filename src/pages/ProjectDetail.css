@@ -2,9 +2,9 @@
   max-width: 1200px;
   margin: 0 auto;
   padding: var(--space-sm) 0;
-  /* Define a default accent color that can be overridden */
-  --project-accent-color: var(--color-primary);
-  --project-accent-transparent: rgba(99, 102, 241, 0.1);
+  /* Remove any redundant styles already in DetailWrapper.css */
+  --project-accent-color: var(--detail-accent-color);
+  --project-accent-transparent: var(--detail-accent-transparent);
 }
 
 .project-hero {
@@ -130,9 +130,14 @@
   flex-wrap: wrap;
 }
 
+.project-links-section {
+  margin-bottom: var(--space-3xl); /* Add sufficient bottom margin before the navigation */
+}
+
 .project-navigation {
   padding-top: var(--space-xl);
   border-top: 1px solid var(--color-border);
+  margin-top: var(--space-xl); /* Add top margin to ensure consistent spacing */
 }
 
 .project-navigation h2 {
@@ -140,6 +145,19 @@
   margin-bottom: var(--space-lg);
   text-align: center;
   color: var(--color-text);
+  position: relative;
+  padding-bottom: var(--space-xs);
+}
+
+.project-navigation h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--project-accent-color, var(--color-primary));
 }
 
 .project-nav-container {
@@ -506,4 +524,9 @@
   .tech-badge:hover {
     background-color: rgba(99, 102, 241, 0.3);
   }
+}
+
+/* Also ensure proper spacing if no links section exists */
+.project-description {
+  margin-bottom: var(--space-3xl);
 }

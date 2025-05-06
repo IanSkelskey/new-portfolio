@@ -1,0 +1,203 @@
+.detail-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: var(--space-md);
+  /* Define a default accent color that can be overridden */
+  --detail-accent-color: var(--color-primary);
+  --detail-accent-transparent: rgba(99, 102, 241, 0.1);
+}
+
+/* Hero section with responsive grid layout */
+.detail-hero {
+  margin-bottom: var(--space-2xl);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-xl);
+  align-items: center;
+}
+
+/* Back link with hover animation */
+.back-link {
+  display: inline-block;
+  margin-bottom: var(--space-md);
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.back-link:hover {
+  transform: translateX(-3px);
+}
+
+/* Hero content styling */
+.detail-hero-content h1 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--space-sm);
+  /* Always use theme color for text to maintain contrast */
+  color: var(--color-text);
+  line-height: 1.2;
+}
+
+.detail-subtitle {
+  font-size: var(--font-size-xl);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+  line-height: 1.4;
+}
+
+/* Metadata display */
+.detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-lg);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.detail-meta-item {
+  display: flex;
+  align-items: center;
+  font-size: var(--font-size-base);
+}
+
+.detail-meta-item:before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--detail-accent-color);
+  margin-right: var(--space-xs);
+}
+
+/* Hero image with hover animation */
+.detail-hero-image {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 5px 30px var(--color-shadow);
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.detail-hero-image:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 40px var(--color-shadow);
+}
+
+.detail-hero-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Icon styling */
+.detail-hero-icon {
+  margin-bottom: var(--space-md);
+  width: 50px;
+  height: 50px;
+  color: var(--detail-accent-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detail-hero-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Main content section */
+.detail-content {
+  margin-bottom: var(--space-2xl);
+}
+
+/* Section styling for consistent headings */
+.detail-content h2 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-md);
+  color: var(--color-text);
+  position: relative;
+  padding-bottom: var(--space-xs);
+}
+
+.detail-content h2:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background-color: var(--detail-accent-color);
+}
+
+/* Centered heading with properly aligned underline */
+.detail-content h2.centered {
+  text-align: center;
+}
+
+.detail-content h2.centered:after {
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.detail-content p {
+  margin-bottom: var(--space-lg);
+  font-size: var(--font-size-md);
+  line-height: 1.8;
+  color: var(--color-text);
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .detail-hero {
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
+  
+  .detail-hero-content h1 {
+    font-size: var(--font-size-2xl);
+  }
+  
+  .detail-subtitle {
+    font-size: var(--font-size-lg);
+  }
+}
+
+@media (max-width: 768px) {
+  .detail-meta {
+    flex-direction: column;
+    gap: var(--space-xs);
+  }
+  
+  .detail-hero-content h1 {
+    font-size: var(--font-size-xl);
+  }
+  
+  .detail-subtitle {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .detail-wrapper {
+    padding: var(--space-sm);
+  }
+  
+  .detail-hero-icon {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* Dark mode specific adjustments */
+@media (prefers-color-scheme: dark) {
+  .detail-meta-item:before {
+    /* Ensure the dot is visible in dark mode */
+    opacity: 0.9;
+  }
+  
+  .detail-hero-image {
+    /* Add a subtle border in dark mode for better definition */
+    border: 1px solid var(--color-border);
+  }
+}

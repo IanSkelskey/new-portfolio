@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import PageWrapper from '../components/PageWrapper';
+import SkillGrid from '../components/SkillGrid';
 import './AboutPage.css';
 
 const AboutPage = ({ aboutData, skillsData, socialData }) => {
@@ -39,12 +40,6 @@ const AboutPage = ({ aboutData, skillsData, socialData }) => {
   if (loading) return <div className="loading">Loading about information...</div>;
   if (error) return <div className="error">Error: {error}</div>;
 
-  // Group skills by category for display
-  const skillsByCategory = skillsData.categories.reduce((acc, category) => {
-    acc[category] = skillsData.skills.filter(skill => skill.category === category);
-    return acc;
-  }, {});
-
   return (
     <PageWrapper 
       title="About Me" 
@@ -72,22 +67,7 @@ const AboutPage = ({ aboutData, skillsData, socialData }) => {
         variants={containerVariants}
       >
         <motion.h2 variants={itemVariants}>Skills & Technologies</motion.h2>
-        <motion.div className="skills-grid" variants={containerVariants}>
-          {Object.entries(skillsByCategory).map(([category, skills]) => (
-            <motion.div key={category} className="skill-category" variants={itemVariants}>
-              <h3>{category}</h3>
-              <ul>
-                {skills.map(skill => (
-                  <li key={skill.id}>
-                    <Link to={`/skills/${skill.id}`} className="skill-link">
-                      {skill.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </motion.div>
-          ))}
-        </motion.div>
+        <SkillGrid skillsData={skillsData} />
       </motion.section>
 
       <motion.section 

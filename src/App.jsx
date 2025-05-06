@@ -5,12 +5,12 @@ import './App.css';
 // Components
 import Header from './components/Header';
 import ProjectGrid from './pages/ProjectPage';
-import ProjectDetail from './components/ProjectDetail';
+import ProjectDetail from './pages/ProjectDetail';
 import AboutPage from './pages/AboutPage';
 import HomePage from './pages/HomePage';
 import Footer from './components/Footer';
 import LoadingSpinner from './components/LoadingSpinner';
-import SkillDetail from './components/SkillDetail';
+import SkillDetail from './pages/SkillDetail';
 import NotFound from './pages/NotFound';
 
 function App() {
