@@ -101,12 +101,12 @@
   display: flex;
   align-items: center;
   padding: var(--space-md);
-  background-color: var(--color-bg-card);
-  border-radius: var(--radius-lg);
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
   text-decoration: none;
   color: var(--color-text);
-  box-shadow: 0 4px 12px var(--color-shadow);
-  border: 1px solid var(--color-border);
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
   gap: var(--space-md);
   transition: all var(--transition-fast);
 }

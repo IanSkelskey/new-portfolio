@@ -64,10 +64,11 @@
 }
 
 .timeline-content {
-  background-color: var(--color-bg-card);
-  border-radius: var(--radius-lg);
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
   padding: var(--space-md);
-  box-shadow: 0 4px 12px var(--color-shadow);
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
 }
 
 .timeline-year {
@@ -96,10 +97,11 @@
 
 /* Current interests section */
 .interests-content {
-  background-color: var(--color-bg-card);
-  border-radius: var(--radius-lg);
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
   padding: var(--space-lg);
-  box-shadow: 0 4px 20px var(--color-shadow);
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
 }
 
 .current-learning {

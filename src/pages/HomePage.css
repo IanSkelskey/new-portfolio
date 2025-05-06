@@ -118,16 +118,17 @@
 }
 
 .expertise-card {
-  background-color: var(--color-bg-card);
+  background-color: var(--card-bg);
   padding: var(--space-lg);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px var(--color-shadow);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition: var(--card-transition);
+  border: var(--card-border);
 }
 
 .expertise-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 30px var(--color-shadow);
+  transform: var(--card-transform-hover);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .expertise-card h3 {

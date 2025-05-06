@@ -39,7 +39,7 @@ const SkillGrid = ({ skillsData }) => {
       {Object.entries(skillsByCategory).map(([category, skills]) => (
         <motion.div 
           key={category} 
-          className="skill-category" 
+          className="skill-category" /* Using skill-category class directly - we'll handle card styles in CSS */
           variants={itemVariants}
         >
           <h3>{category}</h3>

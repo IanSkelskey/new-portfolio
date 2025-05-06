@@ -4,20 +4,24 @@
   gap: var(--space-lg);
 }
 
+/* Core skill category styling that works with the card class */
 .skill-category {
-  background-color: var(--color-bg-card);
-  border-radius: var(--radius-lg) !important;
+  /* Maintain padding inside the card */
   padding: var(--space-lg);
-  box-shadow: 0 4px 12px var(--color-shadow);
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--color-border);
+  /* Explicitly set these properties to ensure they're applied */
+  background-color: var(--card-bg) !important;
+  border-radius: var(--card-radius) !important;
+  box-shadow: var(--card-shadow) !important;
+  transition: var(--card-transition) !important;
+  border: var(--card-border) !important;
 }
 
+/* Apply proper hover effects, ensuring they work alongside card class */
 .skill-category:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 28px var(--color-shadow);
+  transform: var(--card-transform-hover) !important;
+  box-shadow: var(--card-shadow-hover) !important;
   border-color: var(--color-primary-light, rgba(99, 102, 241, 0.3));
 }
 
@@ -32,10 +36,16 @@
   background: linear-gradient(90deg, var(--color-primary), var(--color-primary-light, rgba(99, 102, 241, 0.5)));
   opacity: 0;
   transition: opacity 0.3s ease;
+  z-index: 1; /* Ensure this appears above other elements */
 }
 
 .skill-category:hover::before {
   opacity: 1;
+}
+
+/* Only keep custom styling specific to skill categories */
+.skill-category:hover {
+  border-color: var(--color-primary-light, rgba(99, 102, 241, 0.3));
 }
 
 .skill-category h3 {

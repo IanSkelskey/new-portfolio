@@ -55,12 +55,21 @@
   /* Transitions */
   --transition-fast: 0.2s ease;
   --transition-base: 0.3s ease;
-
+  
   /* CTA section specific colors */
   --color-cta-text: #ffffff;
   --color-cta-text-secondary: rgba(255, 255, 255, 0.9);
   --color-cta-border: transparent;
   --color-cta-btn-border: white;
+  
+  /* Card specific variables */
+  --card-bg: #fff;
+  --card-radius: var(--radius-lg);
+  --card-shadow: 0 4px 20px var(--color-shadow);
+  --card-border: none;
+  --card-transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  --card-transform-hover: translateY(-5px);
+  --card-shadow-hover: 0 10px 25px var(--color-shadow);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -81,6 +90,9 @@
     --color-link-hover: #ddd6fe;
     --color-disabled: #9ca3af;
     --color-text-high-contrast: #ffffff;
+
+    /* Fix for card backgrounds in dark mode */
+    --card-bg: var(--color-bg-card); /* Add this line to update card backgrounds */
 
     /* Adjusted button colors for dark mode */
     --color-btn-app: #1d4ed8; /* Darkened blue for better contrast with white text */
@@ -320,16 +332,17 @@ button {
 
 /* Card styles */
 .card {
-  background-color: var(--color-bg-card);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 20px var(--color-shadow);
+  background-color: var(--card-bg);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  border: var(--card-border);
   overflow: hidden;
-  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  transition: var(--card-transition);
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 25px var(--color-shadow);
+  transform: var(--card-transform-hover);
+  box-shadow: var(--card-shadow-hover);
 }
 
 /* Section styles */
@@ -372,7 +385,7 @@ button {
   .heading-xl {
     font-size: var(--font-size-2xl);
   }
-  
+
   .heading-lg {
     font-size: var(--font-size-xl);
   }
@@ -382,7 +395,7 @@ button {
   .content-container {
     padding: var(--space-md) var(--space-sm);
   }
-  
+
   .heading-xl {
     font-size: var(--font-size-xl);
   }
@@ -414,39 +427,39 @@ button {
     color: #f3f4f6;
     font-weight: 600;
   }
-  
+
   .filter-btn.active {
     background-color: var(--color-primary);
     color: #000000;
   }
-  
+
   .tech-tag {
     background-color: rgba(165, 180, 252, 0.2);
     color: #e2e8f0;
   }
-  
+
   .social-links a {
     background-color: rgba(165, 180, 252, 0.2);
   }
-  
+
   .btn-secondary {
     border-width: 2px;
   }
-  
+
   .cta-section {
     background-color: #4338ca;
     border-color: rgba(255, 255, 255, 0.2);
   }
-  
+
   .cta-section h2 {
     color: #ffffff;
     text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
   }
-  
+
   .cta-section p {
     color: rgba(255, 255, 255, 0.95);
   }
-  
+
   .cta-section .btn-primary {
     color: #000000;
     background-color: #ffffff;
