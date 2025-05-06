@@ -244,8 +244,9 @@ button {
 
 .btn-primary:hover {
   background-color: var(--color-link-hover, var(--color-primary-accent));
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px var(--color-shadow);
+  transform: translateY(-1px); /* Reduced transform for better readability */
+  box-shadow: 0 3px 8px var(--color-shadow); /* Reduced shadow */
+  color: var(--color-text-on-primary); /* Explicitly set text color on hover */
 }
 
 /* Button variants - SECONDARY */

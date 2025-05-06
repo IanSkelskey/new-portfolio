@@ -21,12 +21,12 @@ export const itemFadeIn = (index = 0, delayFactor = 0.05) => ({
   }
 });
 
-// For cards with hover state changes
+// For cards with hover state changes - toned down
 export const cardHoverTransition = {
   whileHover: {
-    y: -5,
-    boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)",
-    transition: { duration: 0.2, ease: "easeOut" }
+    y: -3, // Reduced from -5
+    boxShadow: "0 6px 15px rgba(0, 0, 0, 0.08)", // Reduced shadow
+    transition: { duration: 0.3, ease: "easeOut" }
   }
 };
 
