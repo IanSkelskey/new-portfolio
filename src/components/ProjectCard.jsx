@@ -1,32 +1,14 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import IconRenderer from './IconRenderer';
+import { itemFadeIn } from '../animations';
 import './ProjectCard.css';
 
 const ProjectCard = ({ project, index, minimal = false }) => {
-  // Handle animation variants
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { 
-        delay: index * 0.05,
-        duration: 0.35,
-        ease: "easeOut"
-      }
-    },
-    exit: { 
-      opacity: 0, 
-      scale: 0.9, 
-      transition: { duration: 0.2 } 
-    }
-  };
-
   return (
     <motion.div 
       className={`project-card ${minimal ? 'project-card-minimal' : ''}`}
-      variants={cardVariants}
+      variants={itemFadeIn(index)}
       layout
     >
       <Link to={project.path} className="project-link">

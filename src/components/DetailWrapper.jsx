@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import { pageTransition, contentTransition } from '../animations';
 import './DetailWrapper.css';
 
 const DetailWrapper = ({
@@ -17,38 +18,19 @@ const DetailWrapper = ({
   animate = true,
   className = ''
 }) => {
-  // Animation variants
-  const pageVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { duration: 0.5, when: 'beforeChildren' }
-    },
-    exit: { opacity: 0, transition: { duration: 0.3 } }
-  };
-
-  const childVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0, 
-      transition: { duration: 0.5 } 
-    }
-  };
-
   // Wrapper component - conditionally animate if specified
   const Wrapper = animate ? motion.div : 'div';
   const wrapperProps = animate ? {
     initial: 'hidden',
     animate: 'visible',
     exit: 'exit',
-    variants: pageVariants
+    variants: pageTransition
   } : {};
   
   // Inner content component for animations
   const ContentElement = animate ? motion.div : 'div';
   const contentProps = animate ? {
-    variants: childVariants
+    variants: contentTransition
   } : {};
   
   // Create a style object with CSS variables for the accent color if provided

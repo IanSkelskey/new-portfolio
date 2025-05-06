@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import ProjectCard from '../components/ProjectCard';
 import DetailWrapper from '../components/DetailWrapper';
 import CTASection from '../components/CTASection';
+import { staggerContainer, itemFadeIn } from '../animations';
 import './SkillDetail.css';
 
 const SkillDetail = ({ skillsData, projects }) => {
@@ -57,26 +58,6 @@ const SkillDetail = ({ skillsData, projects }) => {
     );
   }
 
-  // Animation variants for the project cards
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-  
   return (
     <DetailWrapper
       title={skill.name}
@@ -88,18 +69,21 @@ const SkillDetail = ({ skillsData, projects }) => {
     >
       <motion.section 
         className="related-projects-section"
-        variants={containerVariants}
+        variants={staggerContainer(0.1)}
         initial="hidden"
         animate="visible"
       >
-        <motion.h2 variants={itemVariants}>Projects Using {skill.name}</motion.h2>
+        <motion.h2 variants={itemFadeIn(0)}>Projects Using {skill.name}</motion.h2>
         
         {relatedProjects.length === 0 ? (
-          <motion.p variants={itemVariants} className="no-projects">
+          <motion.p variants={itemFadeIn(1)} className="no-projects">
             No projects currently use this skill.
           </motion.p>
         ) : (
-          <motion.div className="related-projects-grid" variants={containerVariants}>
+          <motion.div 
+            className="related-projects-grid" 
+            variants={staggerContainer(0.08)}
+          >
             {relatedProjects.map((project, index) => (
               <ProjectCard 
                 key={project.path}
@@ -111,34 +95,51 @@ const SkillDetail = ({ skillsData, projects }) => {
         )}
       </motion.section>
       
-      <section className="related-skills-section">
-        <h2>Related Skills</h2>
-        <div className="related-skills">
+      <motion.section 
+        className="related-skills-section"
+        variants={staggerContainer(0.1)}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 variants={itemFadeIn(0)}>Related Skills</motion.h2>
+        <motion.div 
+          className="related-skills"
+          variants={staggerContainer(0.05)}
+        >
           {skillsData.skills
             .filter(s => s.category === skill.category && s.id !== skill.id)
             .slice(0, 6) // Limit to avoid overwhelming the user
-            .map(relatedSkill => (
-              <Link 
-                key={relatedSkill.id} 
-                to={`/skills/${relatedSkill.id}`}
-                className="related-skill-link"
-              >
-                {relatedSkill.name}
-              </Link>
+            .map((relatedSkill, index) => (
+              <motion.div key={relatedSkill.id} variants={itemFadeIn(index)}>
+                <Link 
+                  to={`/skills/${relatedSkill.id}`}
+                  className="related-skill-link"
+                >
+                  {relatedSkill.name}
+                </Link>
+              </motion.div>
             ))}
             
           {/* If no related skills found */}
           {skillsData.skills.filter(s => s.category === skill.category && s.id !== skill.id).length === 0 && (
-            <p className="no-related-skills">No related skills found in this category.</p>
+            <motion.p className="no-related-skills" variants={itemFadeIn(0)}>
+              No related skills found in this category.
+            </motion.p>
           )}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
       
-      <CTASection 
-        title={`Interested in my work with ${skill.name}?`}
-        primaryButton={{ text: 'Explore All Projects', to: '/projects' }}
-        secondaryButton={{ text: 'Get In Touch', to: '/contact' }}
-      />
+      <motion.div 
+        variants={itemFadeIn(0)}
+        initial="hidden"
+        animate="visible"
+      >
+        <CTASection 
+          title={`Interested in my work with ${skill.name}?`}
+          primaryButton={{ text: 'Explore All Projects', to: '/projects' }}
+          secondaryButton={{ text: 'Get In Touch', to: '/contact' }}
+        />
+      </motion.div>
     </DetailWrapper>
   );
 };

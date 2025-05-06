@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import IconRenderer from '../components/IconRenderer';
 import DetailWrapper from '../components/DetailWrapper';
+import { staggerContainer, itemFadeIn } from '../animations';
 import './ProjectDetail.css';
 
 const ProjectDetail = ({ projects, skillsData }) => {
@@ -100,19 +101,29 @@ const ProjectDetail = ({ projects, skillsData }) => {
       accentColor={project.accentColor}
       className="project-detail"
     >
-      <div className="project-description">
-        <h2 className="section-heading">
+      <motion.div 
+        className="project-description"
+        variants={staggerContainer(0.15)}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 
+          className="section-heading"
+          variants={itemFadeIn(0)}
+        >
           About the Project
-        </h2>
+        </motion.h2>
         
         {/* Use pageBlurb if available, otherwise use description */}
-        <p>{project.pageBlurb || project.description}</p>
+        <motion.p variants={itemFadeIn(1)}>
+          {project.pageBlurb || project.description}
+        </motion.p>
         
         {/* Display structured content if available */}
         {project.content && project.content.length > 0 && 
           project.content.map((item, index) => {
             if (item.type === 'paragraph') {
-              return <p key={index}>{item.content}</p>;
+              return <motion.p key={index} variants={itemFadeIn(index + 2)}>{item.content}</motion.p>;
             }
             // Handle other content types as needed
             return null;
@@ -122,29 +133,44 @@ const ProjectDetail = ({ projects, skillsData }) => {
         {/* Only show skills section if skills are available */}
         {project.skills && project.skills.length > 0 && (
           <>
-            <h2 className="section-heading">Technologies Used</h2>
-            <div className="tech-stack">
-              {project.skills.map(skill => (
-                <Link 
-                  key={skill} 
-                  to={`/skills/${getSkillId(skill)}`} 
-                  className="tech-badge"
-                >
-                  {skill}
-                </Link>
+            <motion.h2 
+              className="section-heading"
+              variants={itemFadeIn(project.content ? project.content.length + 2 : 2)}
+            >
+              Technologies Used
+            </motion.h2>
+            <motion.div 
+              className="tech-stack"
+              variants={staggerContainer(0.05)}
+            >
+              {project.skills.map((skill, index) => (
+                <motion.div key={skill} variants={itemFadeIn(index)}>
+                  <Link 
+                    to={`/skills/${getSkillId(skill)}`} 
+                    className="tech-badge"
+                  >
+                    {skill}
+                  </Link>
+                </motion.div>
               ))}
-            </div>
+            </motion.div>
           </>
         )}
         
         {/* Project links section - only show if there are links available */}
         {(project.github || project.npmUrl || project.gptUrl || project.mobileAppUrl || project.desktopAppUrl || 
           (project.links && project.links.length > 0)) && (
-          <div className="project-links-section">
-            <h2>Project Links</h2>
+          <motion.div 
+            className="project-links-section"
+            variants={staggerContainer(0.1)}
+          >
+            <motion.h2 variants={itemFadeIn(0)}>Project Links</motion.h2>
             
             {/* Primary project links */}
-            <div className="project-links">
+            <motion.div 
+              className="project-links"
+              variants={staggerContainer(0.05)}
+            >
               {project.github && (
                 <a 
                   href={project.github} 
@@ -224,7 +250,7 @@ const ProjectDetail = ({ projects, skillsData }) => {
                   Desktop App
                 </a>
               )}
-            </div>
+            </motion.div>
             
             {/* Additional links from the links array that are not live/demo links */}
             {project.links && project.links.length > 0 && 
@@ -251,52 +277,62 @@ const ProjectDetail = ({ projects, skillsData }) => {
                 </ul>
               </div>
             )}
-          </div>
+          </motion.div>
         )}
-      </div>
+      </motion.div>
       
-      <section className="project-navigation" aria-label="Project navigation">
-        <h2 className="centered">More Projects</h2>
-        <div className="project-nav-container">
+      <motion.section 
+        className="project-navigation" 
+        aria-label="Project navigation"
+        variants={staggerContainer(0.15)}
+        initial="hidden"
+        animate="visible"
+      >
+        <motion.h2 className="centered" variants={itemFadeIn(0)}>More Projects</motion.h2>
+        <motion.div className="project-nav-container" variants={itemFadeIn(1)}>
           {prevProject && (
-            <Link 
-              to={`/projects/${getProjectIdentifier(prevProject.path)}`} 
-              className="nav-card prev"
-              aria-label={`Previous project: ${prevProject.title}`}
-            >
-              <div className="nav-image" aria-hidden="true">
-                <img 
-                  src={prevProject.thumbnail || `https://via.placeholder.com/300x200?text=${encodeURIComponent(prevProject.title)}`} 
-                  alt="" 
-                />
-              </div>
-              <div className="nav-content">
-                <span className="nav-direction">Previous</span>
-                <h3>{prevProject.title}</h3>
-              </div>
-            </Link>
+            <motion.div variants={itemFadeIn(2)}>
+              <Link 
+                to={`/projects/${getProjectIdentifier(prevProject.path)}`} 
+                className="nav-card prev"
+                aria-label={`Previous project: ${prevProject.title}`}
+              >
+                <div className="nav-image" aria-hidden="true">
+                  <img 
+                    src={prevProject.thumbnail || `https://via.placeholder.com/300x200?text=${encodeURIComponent(prevProject.title)}`} 
+                    alt="" 
+                  />
+                </div>
+                <div className="nav-content">
+                  <span className="nav-direction">Previous</span>
+                  <h3>{prevProject.title}</h3>
+                </div>
+              </Link>
+            </motion.div>
           )}
           
           {nextProject && (
-            <Link 
-              to={`/projects/${getProjectIdentifier(nextProject.path)}`} 
-              className="nav-card next"
-              aria-label={`Next project: ${nextProject.title}`}
-            >
-              <div className="nav-content">
-                <span className="nav-direction">Next</span>
-                <h3>{nextProject.title}</h3>
-              </div>
-              <div className="nav-image" aria-hidden="true">
-                <img 
-                  src={nextProject.thumbnail || `https://via.placeholder.com/300x200?text=${encodeURIComponent(nextProject.title)}`} 
-                  alt="" 
-                />
-              </div>
-            </Link>
+            <motion.div variants={itemFadeIn(3)}>
+              <Link 
+                to={`/projects/${getProjectIdentifier(nextProject.path)}`} 
+                className="nav-card next"
+                aria-label={`Next project: ${nextProject.title}`}
+              >
+                <div className="nav-content">
+                  <span className="nav-direction">Next</span>
+                  <h3>{nextProject.title}</h3>
+                </div>
+                <div className="nav-image" aria-hidden="true">
+                  <img 
+                    src={nextProject.thumbnail || `https://via.placeholder.com/300x200?text=${encodeURIComponent(nextProject.title)}`} 
+                    alt="" 
+                  />
+                </div>
+              </Link>
+            </motion.div>
           )}
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </DetailWrapper>
   );
 };

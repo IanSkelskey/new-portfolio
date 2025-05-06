@@ -1,13 +1,13 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import PageWrapper from '../components/PageWrapper';
-import './ProjectPage.css';
 import ProjectCard from '../components/ProjectCard';
+import { staggerContainer, itemFadeIn } from '../animations';
+import './ProjectPage.css';
 
 const ProjectGrid = ({ projects }) => {
   const [filter, setFilter] = useState('all');
   const [filteredProjects, setFilteredProjects] = useState(projects);
-  const [isFiltering, setIsFiltering] = useState(false);
   
   // Extract all unique categories from projects
   const allCategories = projects.reduce((cats, project) => {
@@ -27,52 +27,49 @@ const ProjectGrid = ({ projects }) => {
   const categories = ['all', ...allCategories].filter(Boolean);
 
   useEffect(() => {
-    // Set filtering state to show animation cues
-    setIsFiltering(true);
-    
-    // Small delay to allow animation to work
-    const filterTimeout = setTimeout(() => {
-      setFilteredProjects(
-        filter === 'all' 
-          ? projects 
-          : projects.filter(project => {
-              const projectCategories = Array.isArray(project.categories) 
-                ? project.categories 
-                : [project.category]; // Support both old and new format
-              
-              return projectCategories.includes(filter);
-            })
-      );
-      setIsFiltering(false);
-    }, 300);
-    
-    return () => clearTimeout(filterTimeout);
+    // Filter projects immediately (removes the delay that was causing choppy transitions)
+    setFilteredProjects(
+      filter === 'all' 
+        ? projects 
+        : projects.filter(project => {
+            const projectCategories = Array.isArray(project.categories) 
+              ? project.categories 
+              : [project.category]; // Support both old and new format
+            
+            return projectCategories.includes(filter);
+          })
+    );
   }, [filter, projects]);
+
+  // Use the staggerContainer from our animations
+  const projectGridVariants = staggerContainer(0.05); // Faster stagger for smoother appearance
 
   return (
     <PageWrapper
       title="My Work"
       subtitle="Explore my projects in web development, design, and more."
-      animate={false} // Turn off PageWrapper animations to let the grid handle its own
+      // Enable animations to maintain consistency with other pages
+      animate={true}
     >
       <div className="filter-controls">
         {categories.map(category => (
-          <button 
+          <motion.button 
             key={category}
             className={`filter-btn ${filter === category ? 'active' : ''}`}
             onClick={() => setFilter(category)}
-            disabled={isFiltering}
+            whileHover={{ y: -2 }}
+            whileTap={{ y: 0 }}
           >
             {category}
-          </button>
+          </motion.button>
         ))}
       </div>
 
       <motion.div 
-        className={`project-grid-container ${isFiltering ? 'is-filtering' : ''}`}
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
+        className="project-grid-container"
+        variants={projectGridVariants}
+        initial="hidden"
+        animate="visible"
       >
         <motion.div 
           className="project-grid"
@@ -81,15 +78,15 @@ const ProjectGrid = ({ projects }) => {
             layout: { type: "spring", damping: 30, stiffness: 300 }
           }}
         >
-          <AnimatePresence mode="sync">
+          <AnimatePresence mode="wait">
             {filteredProjects.length === 0 ? (
               <motion.div 
                 className="no-projects-container"
                 key="no-projects"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3 }}
+                variants={itemFadeIn(0)}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
                 layout
               >
                 <p className="no-projects">No projects in this category</p>

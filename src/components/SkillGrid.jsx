@@ -1,28 +1,9 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { gridContainer, itemFadeIn } from '../animations';
 import './SkillGrid.css';
 
 const SkillGrid = ({ skillsData }) => {
-  // Animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
   // Group skills by category for display
   const skillsByCategory = skillsData.categories.reduce((acc, category) => {
     acc[category] = skillsData.skills.filter(skill => skill.category === category);
@@ -32,15 +13,15 @@ const SkillGrid = ({ skillsData }) => {
   return (
     <motion.div 
       className="skills-grid" 
-      variants={containerVariants}
+      variants={gridContainer}
       initial="hidden"
       animate="visible"
     >
-      {Object.entries(skillsByCategory).map(([category, skills]) => (
+      {Object.entries(skillsByCategory).map(([category, skills], index) => (
         <motion.div 
           key={category} 
-          className="skill-category" /* Using skill-category class directly - we'll handle card styles in CSS */
-          variants={itemVariants}
+          className="skill-category"
+          variants={itemFadeIn(index)}
         >
           <h3>{category}</h3>
           <ul>

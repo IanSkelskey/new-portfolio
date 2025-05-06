@@ -5,29 +5,10 @@ import {
   FaGlobe, FaDiscord, FaTwitch, FaDeviantart
 } from 'react-icons/fa';
 import PageWrapper from '../components/PageWrapper';
+import { staggerContainer, itemFadeIn } from '../animations';
 import './ContactPage.css';
 
 const ContactPage = ({ socialLinks = [] }) => {
-  // Animation variants for staggered animations
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
-    visible: {
-      y: 0,
-      opacity: 1,
-      transition: { duration: 0.5, ease: "easeOut" }
-    }
-  };
-
   // Function to render the appropriate icon based on platform
   const renderSocialIcon = (platform) => {
     const iconProps = {
@@ -76,22 +57,25 @@ const ContactPage = ({ socialLinks = [] }) => {
     >
       <motion.div
         className="contact-container"
-        variants={containerVariants}
+        variants={staggerContainer(0.2)}
         initial="hidden"
         animate="visible"
       >
-        <motion.div className="contact-content" variants={itemVariants}>
-          <h2>Connect With Me</h2>
-          <p>
+        <motion.div className="contact-content" variants={itemFadeIn(0)}>
+          <motion.h2 variants={itemFadeIn(1)}>Connect With Me</motion.h2>
+          <motion.p variants={itemFadeIn(2)}>
             Thanks for your interest in my work! The best way to reach out is through 
             my social platforms below. I'm always open to discussing new opportunities,
             collaborations, or just chatting about technology and design.
-          </p>
+          </motion.p>
         </motion.div>
 
-        <motion.div className="social-section" variants={itemVariants}>
-          <h2>Find Me Online</h2>
-          <div className="social-links-grid">
+        <motion.div className="social-section" variants={itemFadeIn(3)}>
+          <motion.h2 variants={itemFadeIn(4)}>Find Me Online</motion.h2>
+          <motion.div 
+            className="social-links-grid"
+            variants={staggerContainer(0.05)}
+          >
             {socialLinks && socialLinks.length > 0 ? (
               socialLinks.map((link, index) => (
                 <motion.a
@@ -101,7 +85,7 @@ const ContactPage = ({ socialLinks = [] }) => {
                   rel="noopener noreferrer"
                   aria-label={link.ariaLabel || `Connect with me on ${link.platform}`}
                   className="social-link-card"
-                  variants={itemVariants}
+                  variants={itemFadeIn(index)}
                   whileHover={{ scale: 1.03, y: -5 }}
                   whileTap={{ scale: 0.97 }}
                 >
@@ -115,19 +99,19 @@ const ContactPage = ({ socialLinks = [] }) => {
                 </motion.a>
               ))
             ) : (
-              <motion.p variants={itemVariants} className="loading-message">
+              <motion.p variants={itemFadeIn(0)} className="loading-message">
                 Social links are loading...
               </motion.p>
             )}
-          </div>
+          </motion.div>
         </motion.div>
 
-        <motion.div className="future-plans" variants={itemVariants}>
-          <h2>Coming Soon</h2>
-          <p>
+        <motion.div className="future-plans" variants={itemFadeIn(socialLinks ? socialLinks.length + 5 : 5)}>
+          <motion.h2 variants={itemFadeIn(0)}>Coming Soon</motion.h2>
+          <motion.p variants={itemFadeIn(1)}>
             I'm planning to add more direct communication channels in the future.
             Check back soon for updates!
-          </p>
+          </motion.p>
         </motion.div>
       </motion.div>
     </PageWrapper>
